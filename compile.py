@@ -12,7 +12,7 @@ for level in levels:
 						t.write(line)
 					if i > 0:
 						t.write('\\end{document}')
-				print(Fore.CYAN + tex_file + Fore.WHITE)
+				print(Fore.CYAN + tex_file + Fore.RESET)
 				os.system(f'latexmk -quiet {tex_file} &&\
 					pdftocairo -png -singlefile -transp -r 2000 {tex_file[:-4]}.pdf {png_file[:-4]} &&\
 					convert -density 300 -trim {png_file} -quality 100 {png_file}')
