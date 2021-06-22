@@ -1,7 +1,10 @@
-\documentclass[crop,varwidth]{standalone}
-\usepackage{amsmath,amssymb}
-%Montserrat fonts
-\usepackage[defaultfam]{montserrat}
-\DeclareSymbolFont {operators} {T1}{Montserrat-LF}{m}{n}
-\DeclareSymbolFont {letters} {T1}{Montserrat-LF}{m}{it}
-\DeclareMathSymbol{\alpha}{\mathalpha}{letters}{11}
+\documentclass[margin=1pt,preview]{standalone}
+\usepackage{amsmath,amssymb,cmbright,enumitem,tikz,xcolor}
+\newenvironment{enum}{\begin{enumerate}[label=\Alph*)]}{\end{enumerate}}
+\usetikzlibrary{angles,calc,quotes,scopes}
+%Math operators
+\DeclareMathOperator{\GR}{GR}
+\DeclareMathOperator{\GA}{GA}
+%From Evan Chen's evan.sty
+\newcommand{\ii}{\item}
+\newcommand{\dg}{^\circ}
