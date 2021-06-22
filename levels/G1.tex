@@ -1,0 +1,31 @@
+%%p01
+Caucula la suma de las medidas de los \'angulos internos de un dec\'agono.
+%%p02
+¿Cu\'antas diagonales se pueden trazar en un hex\'agono?
+%%p03
+¿Cu\'anto mide el \'angulo externo de un icos\'agono regular?
+%%p04
+¿Cu\'anto suman los \'angulos externos e internos de un icos\'agono?
+%%p05
+Tri\'angulo o tambi\'en llamado...?
+%%p06
+Un tri\'angulo tiene $\underline{\phantom{xxxxxxxxx}}$ v\'ertices.
+%%p07
+En la figura, hallar ``$x$''.
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (-20:3);
+		\coordinate (B) at (180:3);
+		\coordinate (C) at (-98:3);
+		\coordinate (D) at (barycentric cs:A=-2,C=5);
+		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
+			\pic["$41\dg$"] {angle=B--A--C};
+			\pic["$x$"] {angle=C--B--A};
+			\pic["$80\dg$"] {angle=B--C--D};
+		}
+		\draw[dashed,thick] (C) -- (D);
+		\draw[thick] (A) node[right] {$A$} -- (B) node[left] {$B$} -- (C) node[below] {$C$} -- (A);
+	\end{tikzpicture}
+\end{center}
+%%p08
+En la figura, calcular $\alpha$.
