@@ -1,5 +1,7 @@
 %%p01
-Caucula la suma de las medidas de los \'angulos internos de un dec\'agono.
+\begin{minipage}{.63\linewidth}
+	Calcula la suma de las medidas de los \'angulos internos de un dec\'agono.
+\end{minipage}
 %%p02
 ¿Cu\'antas diagonales se pueden trazar en un hex\'agono?
 %%p03
@@ -9,14 +11,14 @@ Caucula la suma de las medidas de los \'angulos internos de un dec\'agono.
 %%p05
 Tri\'angulo o tambi\'en llamado...?
 %%p06
-Un tri\'angulo tiene $\underline{\phantom{xxxxxxxxx}}$ v\'ertices.
+Un tri\'angulo tiene $\underline{\phantom{xxxxxxxx}}$ v\'ertices.
 %%p07
 En la figura, hallar ``$x$''.
-\begin{center}
+\begin{figure}[h]
 	\begin{tikzpicture}
-		\coordinate (A) at (-20:3);
-		\coordinate (B) at (180:3);
-		\coordinate (C) at (-98:3);
+		\coordinate (A) at (-20:2);
+		\coordinate (B) at (180:2);
+		\coordinate (C) at (-98:2);
 		\coordinate (D) at (barycentric cs:A=-2,C=5);
 		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
 			\pic["$41\dg$"] {angle=B--A--C};
@@ -26,6 +28,53 @@ En la figura, hallar ``$x$''.
 		\draw[dashed,thick] (C) -- (D);
 		\draw[thick] (A) node[right] {$A$} -- (B) node[left] {$B$} -- (C) node[below] {$C$} -- (A);
 	\end{tikzpicture}
-\end{center}
+\end{figure}
 %%p08
 En la figura, calcular $\alpha$.
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\coordinate (A) at (-160:2);
+		\coordinate (B) at (120:2);
+		\coordinate (C) at (-30:2);
+		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
+			\pic["$75\dg$"] {angle=C--A--B};
+			\pic["$\alpha$"] {angle=A--B--C};
+			\pic["$40\dg$"] {angle=B--C--A};
+		}
+		\draw[thick] (A) node[below left] {$A$} -- (B) node[above] {$B$} -- (C) node[below right] {$C$} -- (A);
+	\end{tikzpicture}
+\end{figure}
+%%p09
+En la figura, hallar ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\coordinate (A) at (-150:2);
+		\coordinate (B) at (-30:2);
+		\coordinate (C) at (60:2);
+		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
+			\pic["$3x$"] {angle=B--A--C};
+			\pic["$5x$"] {angle=C--B--A};
+			\pic["$4x$"] {angle=A--C--B};
+		}
+		\draw[thick] (A) node[below left] {$A$} -- (B) node[below right] {$B$} -- (C) node[above] {$C$} -- (A);
+	\end{tikzpicture}
+\end{figure}
+%%p10
+\begin{minipage}{.63\linewidth}
+	Escribe verdadero (V) o falso (F) seg\'un corresponda y encierra la alternativa correcta.
+	\begin{center}\vspace{-12pt}
+		\begin{tabular}{m{.02\linewidth}m{.74\linewidth}l}
+			I.&Un hex\'agono posee $9$ diagonales.&(\phantom{V}) \vspace{4pt}\\
+			II.&Un pent\'agono posee $5$ diagonales.&(\phantom{V}) \vspace{4pt}\\
+			III.&La suma de las medidas de \'angulos&\multirow{2}{*}{(\phantom{V})} \\
+			&interiores de un dodec\'agono es $1800\dg$.&
+		\end{tabular}
+	\end{center}
+\end{minipage}
+%%p11
+Hallar la medida del \'angulo interior del pol\'igono regular mostrado.
+\begin{center}
+	\begin{tikzpicture}
+		\node [draw,thick,regular polygon,regular polygon sides=5,minimum size=5cm] {};
+	\end{tikzpicture}
+\end{center}

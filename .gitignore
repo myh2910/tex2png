@@ -1,3 +1,4 @@
 *.png
 levels/*/
 levels/**
+__pycache__
