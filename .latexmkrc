@@ -5,7 +5,10 @@ add_cus_dep("asy","eps",0,"asy");
 add_cus_dep("asy","pdf",0,"asy");
 add_cus_dep("asy","tex",0,"asy");
 
-$max_repeat = 12;
 $pdf_mode = 1;
+$pdflatex =
+	'pdflatex %O'.
+		'"\\expandafter\\def\\csname sa@internal@rune\\endcsname{1}\\input{"%S"}"; '.
+	'convert -density 300 -trim %D +profile "*" %R.png';
 
 # vim: ft=perl

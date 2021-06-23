@@ -37,13 +37,13 @@ pkg_manager = [
 		'id': '\\begin{enum}',
 		'use': r"""\usepackage{tasks}
 \NewTasksEnvironment[label=\Alph*)]{enum}[*]
-\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
 """
 	},
 	{
 		'stat': False,
 		'id': '\\begin{task}',
-		'use': r"""\newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
+		'use': r"""\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
+\newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
 """
 	},
 	{
@@ -88,19 +88,15 @@ def convert(level):
 							pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
-				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {tex_file}...{Fore.LIGHTCYAN_EX}')
-				os.system(f'latexmk -quiet {tex_file}\
-					&& pdftocairo -png -singlefile -transp -r 2000 {tex_file[:-4]}.pdf {png_file[:-4]}\
-					&& convert -density 300 -trim {png_file} -quality 100 {png_file}')
-				print(Fore.RESET)
+				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTYELLOW_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.LIGHTWHITE_EX}')
+				os.system(f'latexmk -quiet {tex_file}')
 			if '%%' in line:
-				dirs = [f'levels/{x}/{os.path.basename(level)[:-4]}/' for x in ['tex', 'png']]
-				for d in dirs:
-					if not os.path.exists(d):
-						os.makedirs(d)
+				tex_dir = f'tex/{os.path.basename(level)[:-4]}/'
+				if not os.path.exists(tex_dir):
+					os.makedirs(tex_dir)
 				types = line.strip().split('.')
 				kind = types[0][2:]
-				tex_file, png_file = f'{dirs[0]}{kind}.tex', f'{dirs[1]}{kind}.png'
+				tex_file = f'{tex_dir}{kind}.tex'
 				with open(tex_file, 'w') as t:
 					t.write(r"""\documentclass[margin=1pt,preview]{standalone}
 \usepackage{amsmath,amssymb,cmbright}
@@ -126,12 +122,12 @@ def compile(*levels):
 		levels = [f'levels/{x}.tex' for x in levels]
 	for level in levels:
 		if os.path.exists(level):
-			print(f'{Fore.LIGHTGREEN_EX}File {level} found. Processing images...{Fore.RESET}')
+			print(f'{Fore.LIGHTGREEN_EX}File {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images...')
 			convert(level)
 		else:
-			print(f'{Fore.LIGHTRED_EX}Error! The file {level} does not exist.{Fore.RESET}')
+			print(f'{Fore.LIGHTRED_EX}Error! The file {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTRED_EX}does not exist.')
 	end = timer()
-	print(end - start)
+	print(f'{Fore.LIGHTYELLOW_EX}Elapsed time: {Fore.LIGHTCYAN_EX}{end - start} {Fore.LIGHTYELLOW_EX}seconds.')
 
 if __name__ == '__main__':
 	compile()
