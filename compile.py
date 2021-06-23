@@ -7,62 +7,62 @@ pkg_manager = [
 	{
 		'stat': False,
 		'id': '\\begin{tabular}',
-		'use': '\\usepackage{array}\n'
+		'code': '\\usepackage{array}\n'
 	},
 	{
 		'stat': False,
 		'id': '\\multirow{',
-		'use': '\\usepackage{multirow}\n'
+		'code': '\\usepackage{multirow}\n'
 	},
 	{
 		'stat': False,
 		'id': '\\color{',
-		'use': '\\usepackage{xcolor}\n'
+		'code': '\\usepackage{xcolor}\n'
 	},
 	{
 		'stat': False,
 		'id': '\\begin{tikzpicture}',
-		'use': r"""\usepackage{tikz}
+		'code': r'''\usepackage{tikz}
 \usetikzlibrary{angles,calc,quotes,scopes,shapes.geometric}
-"""
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\begin{mini}',
-		'use': r"""\newenvironment{mini}{\begin{minipage}{.6\linewidth}}{\end{minipage}}
-"""
+		'code': r'''\newenvironment{mini}{\begin{minipage}{.6\linewidth}}{\end{minipage}}
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\begin{enum}',
-		'use': r"""\usepackage{tasks}
+		'code': r'''\usepackage{tasks}
 \NewTasksEnvironment[label=\Alph*)]{enum}[*]
-"""
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\begin{task}',
-		'use': r"""\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
+		'code': r'''\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
 \newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
-"""
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\dg',
-		'use': r"""\newcommand{\dg}{^\circ}
-"""
+		'code': r'''\newcommand{\dg}{^\circ}
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\GA',
-		'use': r"""\DeclareMathOperator{\GA}{GA}
-"""
+		'code': r'''\DeclareMathOperator{\GA}{GA}
+'''
 	},
 	{
 		'stat': False,
 		'id': '\\GR',
-		'use': r"""\DeclareMathOperator{\GR}{GR}
-"""
+		'code': r'''\DeclareMathOperator{\GR}{GR}
+'''
 	}
 ]
 def convert(level):
@@ -84,7 +84,7 @@ def convert(level):
 						contents.append('\\end{document}')
 					for pkg in pacman:
 						if pkg['stat']:
-							contents.insert(2, pkg['use'])
+							contents.insert(2, pkg['code'])
 							pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
@@ -98,16 +98,16 @@ def convert(level):
 				kind = types[0][2:]
 				tex_file = f'{tex_dir}{kind}.tex'
 				with open(tex_file, 'w') as t:
-					t.write(r"""\documentclass[margin=1pt,preview]{standalone}
+					t.write(r'''\documentclass[margin=1pt,preview]{standalone}
 \usepackage{amsmath,amssymb,cmbright}
-""")
+''')
 					if 'sp' in types:
 						t.write('\\usepackage[spanish]{babel}\n')
 					if kind[0] == 'r':
-						t.write(r"""\usepackage{xcolor}
+						t.write(r'''\usepackage{xcolor}
 \begin{document}
 \color{red}
-""")
+''')
 					else:
 						t.write('\\begin{document}\n')
 			elif i < len(original) - 1:
