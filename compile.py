@@ -11,6 +11,60 @@ def convert(level):
 						t.write(line)
 					if i > 0:
 						t.write('\\end{document}')
+				with open(tex_file, 'r+') as t:
+					gr, ga, dg = False, False, False
+					enum, mini, tasks, tikz = False, False, False, False
+					xcolor, multirow, array = False, False, False
+					contents = t.readlines()
+					for content in contents:
+						if '\\GR' in content:
+							gr = True
+						if '\\GA' in content:
+							ga = True
+						if '\\dg' in content:
+							dg = True
+						if '\\begin{enum}' in content:
+							enum = True
+						if '\\begin{mini}' in content:
+							mini = True
+						if '\\begin{task}' in content:
+							tasks = True
+						if 'tikz' in content:
+							tikz = True
+						if '\\color' in content:
+							xcolor = True
+						if 'multirow' in content:
+							multirow = True
+						if '\\begin{tabular}' in content:
+							array = True
+					if gr:
+						contents.insert(2, '\\DeclareMathOperator{\\GR}{GR}\n')
+					if ga:
+						contents.insert(2, '\\DeclareMathOperator{\\GA}{GA}\n')
+					if dg:
+						contents.insert(2, '\\newcommand{\\dg}{^\\circ}\n')
+					if tasks:
+						enum, mini = True, True
+						contents.insert(2, '\\newenvironment{task}{\\begin{mini}\\begin{enum*}}{\\end{enum*}\\end{mini}}\n')
+					if enum:
+						contents.insert(2, """\\usepackage{tasks}
+\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]
+\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)
+""")
+					if mini:
+						contents.insert(2, '\\newenvironment{mini}{\\begin{minipage}{.6\\linewidth}}{\\end{minipage}}\n')
+					if tikz:
+						contents.insert(2, """\\usepackage{tikz}
+\\usetikzlibrary{angles,calc,quotes,scopes,shapes.geometric}
+""")
+					if xcolor:
+						contents.insert(2, '\\usepackage{xcolor}\n')
+					if multirow:
+						contents.insert(2, '\\usepackage{multirow}\n')
+					if array:
+						contents.insert(2, '\\usepackage{array}\n')
+					t.seek(0)
+					t.writelines(contents)
 				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {tex_file}...{Fore.LIGHTCYAN_EX}')
 				os.system(f'latexmk -quiet {tex_file}\
 					&& pdftocairo -png -singlefile -transp -r 2000 {tex_file[:-4]}.pdf {png_file[:-4]}\
@@ -21,17 +75,18 @@ def convert(level):
 				for d in dirs:
 					if not os.path.exists(d):
 						os.makedirs(d)
-				kind = line.strip()[2:]
+				types = line.strip().split('.')
+				kind = types[0][2:]
 				tex_file, png_file = f'{dirs[0]}{kind}.tex', f'{dirs[1]}{kind}.png'
 				with open(tex_file, 'w') as t:
-					with open('preamble.tex', 'r') as f:
-						t.write(f.read())
+					t.write("""\\documentclass[margin=1pt,preview]{standalone}
+\\usepackage{amsmath,amssymb,cmbright}
+""")
+					if 'sp' in types:
+						t.write('\\usepackage[spanish]{babel}\n')
 					t.write('\\begin{document}\n')
-					try:
-						with open(f'macros/{kind[0]}.tex', 'r') as f:
-							t.write(f.read())
-					except:
-						pass
+					if kind[0] == 'r':
+						t.write('\color{red}\n')
 			elif i < len(original) - 1:
 				with open(tex_file, 'a') as t:
 					t.write(line)
