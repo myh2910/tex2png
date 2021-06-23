@@ -1,68 +1,91 @@
 import os
 from glob import glob
 from colorama import Fore
+from timeit import default_timer as timer
+
+pkg_manager = [
+	{
+		'stat': False,
+		'id': '\\begin{tabular}',
+		'use': '\\usepackage{array}\n'
+	},
+	{
+		'stat': False,
+		'id': '\\multirow{',
+		'use': '\\usepackage{multirow}\n'
+	},
+	{
+		'stat': False,
+		'id': '\\color{',
+		'use': '\\usepackage{xcolor}\n'
+	},
+	{
+		'stat': False,
+		'id': '\\begin{tikzpicture}',
+		'use': r"""\usepackage{tikz}
+\usetikzlibrary{angles,calc,quotes,scopes,shapes.geometric}
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\begin{mini}',
+		'use': r"""\newenvironment{mini}{\begin{minipage}{.6\linewidth}}{\end{minipage}}
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\begin{enum}',
+		'use': r"""\usepackage{tasks}
+\NewTasksEnvironment[label=\Alph*)]{enum}[*]
+\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\begin{task}',
+		'use': r"""\newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\dg',
+		'use': r"""\newcommand{\dg}{^\circ}
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\GA',
+		'use': r"""\DeclareMathOperator{\GA}{GA}
+"""
+	},
+	{
+		'stat': False,
+		'id': '\\GR',
+		'use': r"""\DeclareMathOperator{\GR}{GR}
+"""
+	}
+]
 def convert(level):
 	with open(level, 'r') as o:
 		original = o.readlines()
+		pacman = list(reversed(pkg_manager))
 		for i, line in enumerate(original):
+			for pkg_idx, pkg in enumerate(pacman):
+				if pkg['id'] in line:
+					if pkg_idx == 3:
+						pacman[4]['stat'] = True
+					pkg['stat'] = True
 			if '%%' in line and i > 0 or i > len(original) - 2:
-				with open(tex_file, 'a') as t:
-					if i > len(original) - 2:
-						t.write(line)
-					if i > 0:
-						t.write('\\end{document}')
 				with open(tex_file, 'r+') as t:
-					gr, ga, dg = False, False, False
-					enum, mini, tasks, tikz = False, False, False, False
-					xcolor, multirow, array = False, False, False
 					contents = t.readlines()
-					for content in contents:
-						if '\\GR' in content:
-							gr = True
-						if '\\GA' in content:
-							ga = True
-						if '\\dg' in content:
-							dg = True
-						if '\\begin{enum}' in content:
-							enum = True
-						if '\\begin{mini}' in content:
-							mini = True
-						if '\\begin{task}' in content:
-							tasks = True
-						if 'tikz' in content:
-							tikz = True
-						if '\\color' in content:
-							xcolor = True
-						if 'multirow' in content:
-							multirow = True
-						if '\\begin{tabular}' in content:
-							array = True
-					if gr:
-						contents.insert(2, '\\DeclareMathOperator{\\GR}{GR}\n')
-					if ga:
-						contents.insert(2, '\\DeclareMathOperator{\\GA}{GA}\n')
-					if dg:
-						contents.insert(2, '\\newcommand{\\dg}{^\\circ}\n')
-					if tasks:
-						enum, mini = True, True
-						contents.insert(2, '\\newenvironment{task}{\\begin{mini}\\begin{enum*}}{\\end{enum*}\\end{mini}}\n')
-					if enum:
-						contents.insert(2, """\\usepackage{tasks}
-\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]
-\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)
-""")
-					if mini:
-						contents.insert(2, '\\newenvironment{mini}{\\begin{minipage}{.6\\linewidth}}{\\end{minipage}}\n')
-					if tikz:
-						contents.insert(2, """\\usepackage{tikz}
-\\usetikzlibrary{angles,calc,quotes,scopes,shapes.geometric}
-""")
-					if xcolor:
-						contents.insert(2, '\\usepackage{xcolor}\n')
-					if multirow:
-						contents.insert(2, '\\usepackage{multirow}\n')
-					if array:
-						contents.insert(2, '\\usepackage{array}\n')
+					if i > len(original) - 2:
+						contents.append(line)
+					if i > 0:
+						contents.append('\\end{document}')
+					for pkg in pacman:
+						if pkg['stat']:
+							contents.insert(2, pkg['use'])
+							pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
 				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {tex_file}...{Fore.LIGHTCYAN_EX}')
@@ -79,18 +102,24 @@ def convert(level):
 				kind = types[0][2:]
 				tex_file, png_file = f'{dirs[0]}{kind}.tex', f'{dirs[1]}{kind}.png'
 				with open(tex_file, 'w') as t:
-					t.write("""\\documentclass[margin=1pt,preview]{standalone}
-\\usepackage{amsmath,amssymb,cmbright}
+					t.write(r"""\documentclass[margin=1pt,preview]{standalone}
+\usepackage{amsmath,amssymb,cmbright}
 """)
 					if 'sp' in types:
 						t.write('\\usepackage[spanish]{babel}\n')
-					t.write('\\begin{document}\n')
 					if kind[0] == 'r':
-						t.write('\color{red}\n')
+						t.write(r"""\usepackage{xcolor}
+\begin{document}
+\color{red}
+""")
+					else:
+						t.write('\\begin{document}\n')
 			elif i < len(original) - 1:
 				with open(tex_file, 'a') as t:
 					t.write(line)
+
 def compile(*levels):
+	start = timer()
 	if len(levels) == 0:
 		levels = glob('levels/*.tex')
 	else:
@@ -101,3 +130,8 @@ def compile(*levels):
 			convert(level)
 		else:
 			print(f'{Fore.LIGHTRED_EX}Error! The file {level} does not exist.{Fore.RESET}')
+	end = timer()
+	print(end - start)
+
+if __name__ == '__main__':
+	compile()
