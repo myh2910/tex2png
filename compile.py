@@ -5,75 +5,114 @@ from timeit import default_timer as timer
 
 pkg_manager = [
 	{
+		'name': 'array',
 		'stat': False,
 		'id': '\\begin{tabular}',
+		'parent': None,
 		'code': '\\usepackage{array}\n'
 	},
 	{
+		'name': 'multirow',
 		'stat': False,
 		'id': '\\multirow{',
+		'parent': None,
 		'code': '\\usepackage{multirow}\n'
 	},
 	{
+		'name': 'xcolor',
 		'stat': False,
 		'id': '\\color{',
+		'parent': None,
 		'code': '\\usepackage{xcolor}\n'
 	},
 	{
+		'name': 'tikz',
 		'stat': False,
 		'id': '\\begin{tikzpicture}',
+		'parent': None,
 		'code': r'''\usepackage{tikz}
-\usetikzlibrary{angles,calc,quotes,scopes,shapes.geometric}
+\usetikzlibrary{calc,scopes,shapes.geometric}
 '''
 	},
 	{
+		'name': 'tikz.angles',
+		'stat': False,
+		'id': 'angle',
+		'parent': 'tikz',
+		'code': '\\usetikzlibrary{angles,quotes}\n'
+	},
+	{
+		'name': 'tikz.intersections',
+		'stat': False,
+		'id': 'intersection',
+		'parent': 'tikz',
+		'code': '\\usetikzlibrary{intersections}\n'
+	},
+	{
+		'name': 'mini',
 		'stat': False,
 		'id': '\\begin{mini}',
-		'code': r'''\newenvironment{mini}{\begin{minipage}{.6\linewidth}}{\end{minipage}}
-'''
+		'parent': None,
+		'code': '\\newenvironment{mini}{\\begin{minipage}{.6\\linewidth}}{\\end{minipage}}\n'
 	},
 	{
+		'name': 'tasks',
+		'stat': False,
+		'id': '\\begin{tasks}',
+		'parent': None,
+		'code': '\\usepackage{tasks}\n'
+	},
+	{
+		'name': 'enum',
 		'stat': False,
 		'id': '\\begin{enum}',
-		'code': r'''\usepackage{tasks}
-\NewTasksEnvironment[label=\Alph*)]{enum}[*]
-'''
+		'parent': 'tasks',
+		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
 	},
 	{
+		'name': 'task',
 		'stat': False,
 		'id': '\\begin{task}',
+		'parent': 'tasks',
 		'code': r'''\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
 \newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
 '''
 	},
 	{
+		'name': 'dg',
 		'stat': False,
 		'id': '\\dg',
-		'code': r'''\newcommand{\dg}{^\circ}
-'''
+		'parent': None,
+		'code': '\\newcommand{\\dg}{^\\circ}\n'
 	},
 	{
+		'name': 'GA',
 		'stat': False,
 		'id': '\\GA',
-		'code': r'''\DeclareMathOperator{\GA}{GA}
-'''
+		'parent': None,
+		'code': '\\DeclareMathOperator{\\GA}{GA}\n'
 	},
 	{
+		'name': 'GR',
 		'stat': False,
 		'id': '\\GR',
-		'code': r'''\DeclareMathOperator{\GR}{GR}
-'''
+		'parent': None,
+		'code': '\\DeclareMathOperator{\\GR}{GR}\n'
 	}
 ]
 def convert(level):
 	with open(level, 'r') as o:
 		original = o.readlines()
 		pacman = list(reversed(pkg_manager))
+		parents = []
 		for i, line in enumerate(original):
-			for pkg_idx, pkg in enumerate(pacman):
+			for pkg in pacman:
+				if pkg['name'] in parents:
+					pkg['stat'] = True
 				if pkg['id'] in line:
-					if pkg_idx == 3:
-						pacman[4]['stat'] = True
+					parent = pkg['parent']
+					if parent:
+						parents.append(parent)
 					pkg['stat'] = True
 			if '%%' in line and i > 0 or i > len(original) - 2:
 				with open(tex_file, 'r+') as t:
@@ -86,9 +125,10 @@ def convert(level):
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
 							pkg['stat'] = False
+					parents = []
 					t.seek(0)
 					t.writelines(contents)
-				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTYELLOW_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.LIGHTWHITE_EX}')
+				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTYELLOW_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
 				os.system(f'latexmk -quiet {tex_file}')
 			if '%%' in line:
 				tex_dir = f'tex/{os.path.basename(level)[:-4]}/'

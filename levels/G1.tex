@@ -3,28 +3,75 @@
 	Calcula la suma de las medidas de los \'angulos internos de un dec\'agono.
 \end{mini}
 %%a01
-\begin{task}
-	*
-	*
-	*
-	*
+\begin{enum}
+	* $1080\dg$
+	* $1260\dg$
+	* $1440\dg$
+	* $900\dg$
 \end{task}
+%%r01
+$1440\dg$
 %%p02.sp
 \begin{mini}
 	¿Cu\'antas diagonales se pueden trazar en un hex\'agono?
 \end{mini}
+%%a02
+\begin{enum}
+	* $6$
+	* $9$
+	* $12$
+	* $7$
+\end{enum}
+%%r02
+$9$
 %%p03.sp
 \begin{mini}
 	¿Cu\'anto mide el \'angulo externo de un icos\'agono regular?
 \end{mini}
+%%a03
+\begin{enum}
+	* $12\dg$
+	* $16\dg$
+	* $10\dg$
+	* $18\dg$
+\end{enum}
+%%r03
+$18\dg$
 %%p04.sp
 \begin{mini}
 	¿Cu\'anto suman los \'angulos externos e internos de un icos\'agono?
 \end{mini}
+%%a04
+\begin{enum}
+	* $2800\dg$
+	* $8200\dg$
+	* $3600\dg$
+	* $4000\dg$
+\end{enum}
+%%r04
+$3600\dg$
 %%p05
 Tri\'angulo o tambi\'en llamado...?
+%%a05
+\begin{enum}
+	* Ala\'in
+	* Tr\'igono
+	* Triangulitis
+	* Cuadril\'atero
+\end{enum}
+%%r05
+Tr\'igono
 %%p06
 Un tri\'angulo tiene $\underline{\phantom{xxxxxxxx}}$ v\'ertices.
+%%a06
+\begin{enum}
+	* $4$
+	* $6$
+	* $3$
+	* $8$
+\end{enum}
+%%r06
+$3$
 %%p07
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
@@ -42,6 +89,15 @@ En la figura, hallar ``$x$''.
 		\draw[thick] (A) node[right] {$A$} -- (B) node[left] {$B$} -- (C) node[below] {$C$} -- (A);
 	\end{tikzpicture}
 \end{figure}
+%%a07
+\begin{task}
+	* $52\dg$
+	* $39\dg$
+	* $61\dg$
+	* $121\dg$
+\end{task}
+%%r07
+$39\dg$
 %%p08
 En la figura, calcular $\alpha$.
 \begin{figure}[h]
@@ -57,6 +113,15 @@ En la figura, calcular $\alpha$.
 		\draw[thick] (A) node[below left] {$A$} -- (B) node[above] {$B$} -- (C) node[below right] {$C$} -- (A);
 	\end{tikzpicture}
 \end{figure}
+%%a08
+\begin{task}
+	* $80\dg$
+	* $40\dg$
+	* $65\dg$
+	* $150\dg$
+\end{task}
+%%r08
+$65\dg$
 %%p09
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
@@ -72,6 +137,15 @@ En la figura, hallar ``$x$''.
 		\draw[thick] (A) node[below left] {$A$} -- (B) node[below right] {$B$} -- (C) node[above] {$C$} -- (A);
 	\end{tikzpicture}
 \end{figure}
+%%a09
+\begin{task}
+	* $15\dg$
+	* $18\dg$
+	* $20\dg$
+	* $10\dg$
+\end{task}
+%%r09
+$15\dg$
 %%p10.sp
 \begin{mini}
 	Escribe verdadero (V) o falso (F) seg\'un corresponda y encierra la alternativa correcta.
@@ -84,6 +158,15 @@ En la figura, hallar ``$x$''.
 		\end{tabular}
 	\end{center}
 \end{mini}
+%%a10
+\begin{task}
+	* VVF
+	* FFV
+	* VVV
+	* FFF
+\end{task}
+%%r10
+VVV
 %%p11
 \begin{mini}
 	Hallar la medida del \'angulo interior del pol\'igono regular mostrado.
@@ -93,3 +176,39 @@ En la figura, hallar ``$x$''.
 		\end{tikzpicture}
 	\end{center}
 \end{mini}
+%%a11
+\begin{task}
+	* $92\dg$
+	* $120\dg$
+	* $108\dg$
+	* $140\dg$
+\end{task}
+%%r11
+$108\dg$
+%%p12
+Calcular ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\coordinate (v0) at (0,0);
+		\coordinate (v1) at (0,4);
+		\coordinate (v2) at (-6.4,0);
+		\path [name path=p1] (v1) -- ++ (-171:6.4);
+		\path [name path=p2] (v2) -- ++ (54:4.2);
+		{ [every path/.style={draw,line width=1pt,angle radius=5mm,angle eccentricity=1.75},name intersections={of=p1 and p2, by={v3}}]
+			\pic["$3x$"] {angle=v3--v1--v0};
+			\pic["$2x$"] {angle=v0--v2--v3};
+			\pic["$x$"] {angle=v2--v3--v1};
+			\pic {right angle=v1--v0--v2};
+		}
+		\draw[thick] (v1) -- (v0) -- (v2) -- (v3) -- (v1);
+	\end{tikzpicture}
+\end{figure}
+%%a12
+\begin{task}
+	* $13\dg$
+	* $17\dg$
+	* $14\dg$
+	* $27\dg$
+\end{task}
+%%r12
+$27\dg$
