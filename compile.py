@@ -3,7 +3,7 @@ from glob import glob
 from colorama import Fore
 from timeit import default_timer as timer
 
-pkg_manager = [
+pacman = [
 	{
 		'name': 'array',
 		'stat': False,
@@ -115,13 +115,13 @@ pkg_manager = [
 	}
 ]
 def convert(level):
-	pacman = list(reversed(pkg_manager))
+	pkgs = list(reversed(pacman))
 	parents = []
 	total = 0
 	with open(level, 'r') as o:
 		original = o.readlines()
 		for i, line in enumerate(original):
-			for pkg in pacman:
+			for pkg in pkgs:
 				if pkg['name'] in parents:
 					pkg['stat'] = True
 				if pkg['cmd'] in line:
@@ -136,7 +136,7 @@ def convert(level):
 						contents.append(line)
 					if i > 0:
 						contents.append('\\end{document}')
-					for pkg in pacman:
+					for pkg in pkgs:
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
 							pkg['stat'] = False
@@ -152,15 +152,15 @@ def convert(level):
 					if not os.path.exists(d):
 						os.makedirs(d)
 				types = line.strip().split('.')
-				kind = types[0][2:]
-				tex_file = f'{dirs[0]}{kind}.tex'
+				file_type = types[0][2:]
+				tex_file = f'{dirs[0]}{file_type}.tex'
 				with open(tex_file, 'w') as t:
 					t.write(r'''\documentclass[margin=1pt,preview]{standalone}
 \usepackage{amsmath,amssymb,cmbright}
 ''')
 					if 'sp' in types:
 						t.write('\\usepackage[spanish]{babel}\n')
-					if kind[0] == 'r':
+					if file_type[0] == 'r':
 						t.write(r'''\usepackage{xcolor}
 \begin{document}
 \color{red}
