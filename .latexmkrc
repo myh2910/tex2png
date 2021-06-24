@@ -9,6 +9,6 @@ $pdf_mode = 1;
 $pdflatex =
 	'pdflatex %O'.
 		'"\\expandafter\\def\\csname sa@internal@rune\\endcsname{1}\\input{"%S"}"; '.
-	'convert -density 1000 -trim %D +profile "*" %R.png';
+	'convert -density 1000 -trim %D +profile "*" png/$(basename $(dirname "%D"))/%R.png';
 
 # vim: ft=perl
