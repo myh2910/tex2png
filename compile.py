@@ -7,28 +7,35 @@ pkg_manager = [
 	{
 		'name': 'array',
 		'stat': False,
-		'id': '\\begin{tabular}',
+		'cmd': '\\begin{tabular}',
 		'parent': None,
 		'code': '\\usepackage{array}\n'
 	},
 	{
 		'name': 'multirow',
 		'stat': False,
-		'id': '\\multirow{',
+		'cmd': '\\multirow{',
 		'parent': None,
 		'code': '\\usepackage{multirow}\n'
 	},
 	{
 		'name': 'xcolor',
 		'stat': False,
-		'id': '\\color{',
+		'cmd': '\\color{',
 		'parent': None,
 		'code': '\\usepackage{xcolor}\n'
 	},
 	{
+		'name': 'tkz-euclide',
+		'stat': False,
+		'cmd': '\\tkz',
+		'parent': None,
+		'code': '\\usepackage{tkz-euclide}\n'
+	},
+	{
 		'name': 'tikz',
 		'stat': False,
-		'id': '\\begin{tikzpicture}',
+		'cmd': '\\begin{tikzpicture}',
 		'parent': None,
 		'code': r'''\usepackage{tikz}
 \usetikzlibrary{calc,scopes,shapes.geometric}
@@ -37,79 +44,87 @@ pkg_manager = [
 	{
 		'name': 'tikz.angles',
 		'stat': False,
-		'id': 'angle',
+		'cmd': 'angle',
 		'parent': 'tikz',
 		'code': '\\usetikzlibrary{angles,quotes}\n'
 	},
 	{
 		'name': 'tikz.intersections',
 		'stat': False,
-		'id': 'intersection',
+		'cmd': 'intersection',
 		'parent': 'tikz',
 		'code': '\\usetikzlibrary{intersections}\n'
 	},
 	{
 		'name': 'mini',
 		'stat': False,
-		'id': '\\begin{mini}',
+		'cmd': '\\begin{mini}',
 		'parent': None,
 		'code': '\\newenvironment{mini}{\\begin{minipage}{.6\\linewidth}}{\\end{minipage}}\n'
 	},
 	{
 		'name': 'tasks',
 		'stat': False,
-		'id': '\\begin{tasks}',
+		'cmd': '\\begin{tasks}',
 		'parent': None,
 		'code': '\\usepackage{tasks}\n'
 	},
 	{
 		'name': 'enum',
 		'stat': False,
-		'id': '\\begin{enum}',
+		'cmd': '\\begin{enum}',
 		'parent': 'tasks',
 		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
 	},
 	{
 		'name': 'task',
 		'stat': False,
-		'id': '\\begin{task}',
+		'cmd': '\\begin{task}',
 		'parent': 'tasks',
 		'code': r'''\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
 \newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
 '''
 	},
 	{
+		'name': 'dang',
+		'stat': False,
+		'cmd': '\\dang',
+		'parent': None,
+		'code': '\\newcommand{\\dang}{\\measuredangle}\n'
+	},
+	{
 		'name': 'dg',
 		'stat': False,
-		'id': '\\dg',
+		'cmd': '\\dg',
 		'parent': None,
 		'code': '\\newcommand{\\dg}{^\\circ}\n'
 	},
 	{
 		'name': 'GA',
 		'stat': False,
-		'id': '\\GA',
+		'cmd': '\\GA',
 		'parent': None,
 		'code': '\\DeclareMathOperator{\\GA}{GA}\n'
 	},
 	{
 		'name': 'GR',
 		'stat': False,
-		'id': '\\GR',
+		'cmd': '\\GR',
 		'parent': None,
 		'code': '\\DeclareMathOperator{\\GR}{GR}\n'
 	}
 ]
 def convert(level):
+	pacman = list(reversed(pkg_manager))
+	parents = []
+	total = 0
 	with open(level, 'r') as o:
 		original = o.readlines()
-		pacman = list(reversed(pkg_manager))
-		parents = []
 		for i, line in enumerate(original):
 			for pkg in pacman:
 				if pkg['name'] in parents:
 					pkg['stat'] = True
-				if pkg['id'] in line:
+				if pkg['cmd'] in line:
 					parent = pkg['parent']
 					if parent:
 						parents.append(parent)
@@ -125,11 +140,12 @@ def convert(level):
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
 							pkg['stat'] = False
-					parents = []
 					t.seek(0)
 					t.writelines(contents)
 				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTYELLOW_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
 				os.system(f'latexmk -quiet {tex_file}')
+				parents = []
+				total += 1
 			if '%%' in line:
 				tex_dir = f'tex/{os.path.basename(level)[:-4]}/'
 				if not os.path.exists(tex_dir):
@@ -153,6 +169,7 @@ def convert(level):
 			elif i < len(original) - 1:
 				with open(tex_file, 'a') as t:
 					t.write(line)
+	return total
 
 def compile(*levels):
 	start = timer()
@@ -160,14 +177,16 @@ def compile(*levels):
 		levels = glob('levels/*.tex')
 	else:
 		levels = [f'levels/{x}.tex' for x in levels]
+	total = 0
 	for level in levels:
 		if os.path.exists(level):
 			print(f'{Fore.LIGHTGREEN_EX}File {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images...')
-			convert(level)
+			total += convert(level)
 		else:
 			print(f'{Fore.LIGHTRED_EX}Error! The file {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTRED_EX}does not exist.')
 	end = timer()
-	print(f'{Fore.LIGHTYELLOW_EX}Elapsed time: {Fore.LIGHTCYAN_EX}{end - start} {Fore.LIGHTYELLOW_EX}seconds.')
+	print(f'{Fore.LIGHTYELLOW_EX}Compiled files: {Fore.LIGHTCYAN_EX}{total} {Fore.LIGHTYELLOW_EX}documents.')
+	print(f'Elapsed time: {Fore.LIGHTCYAN_EX}{end - start} {Fore.LIGHTYELLOW_EX}seconds.')
 
 if __name__ == '__main__':
 	compile()

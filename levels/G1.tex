@@ -212,3 +212,51 @@ Calcular ``$x$''.
 \end{task}
 %%r12
 $27\dg$
+%%p13
+Calcular ``$\theta$'' en:
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\def\r{5}
+		\coordinate (A) at (-160:\r);
+		\coordinate (B) at (164:\r);
+		\coordinate (C) at (-12:\r);
+		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.9}]
+			\pic["$2\theta$"] {angle=C--A--B};
+			\pic["$\theta+30\dg$"] {angle=A--B--C};
+			\pic["$18\dg$"] {angle=B--C--A};
+		}
+		\draw[thick] (A) -- (B) -- (C) -- (A);
+	\end{tikzpicture}
+\end{figure}
+%%r13
+$44\dg$
+%%p14
+En el romboide $ABCD$, calcular ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (75:3);
+		\coordinate (D) at (4,0);
+		\coordinate (C) at ($(B) + (D)$);
+		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
+			\pic["$7x$"] {angle=A--B--C};
+			\pic["$5x$"] {angle=B--C--D};
+		}
+		\draw[thick] (A) node[below left] {$A$} -- (B) node[above left] {$B$} -- (C) node[above right] {$C$} -- (D) node[below right] {$D$} -- (A);
+	\end{tikzpicture}
+\end{figure}
+%%a14
+\begin{task}
+	* $12\dg$
+	* $15\dg$
+	* $10\dg$
+	* $8\dg$
+\end{task}
+%%r14
+$12\dg$
+%%p15.sp
+\begin{mini}
+	¿Cu\'antas diagonales se pueden trazar en total en un pol\'igono de $28$ lados?
+\end{mini}
+%%r15
+$350$
