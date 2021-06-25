@@ -63,6 +63,13 @@ pacman = [
 		'code': '\\usetikzlibrary{intersections}\n'
 	},
 	{
+		'name': 'tikz.matrix',
+		'stat': False,
+		'cmd': '\\matrix',
+		'parent': 'tikz',
+		'code': '\\usetikzlibrary{matrix}\n'
+	},
+	{
 		'name': 'mini',
 		'stat': False,
 		'cmd': '\\begin{mini}',
@@ -84,13 +91,18 @@ pacman = [
 		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
 	},
 	{
+		'name': 'enum*',
+		'stat': False,
+		'cmd': '\\begin{enum*}',
+		'parent': 'tasks',
+		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)\n'
+	},
+	{
 		'name': 'task',
 		'stat': False,
 		'cmd': '\\begin{task}',
-		'parent': 'tasks',
-		'code': r'''\NewTasksEnvironment[label=\Alph*)]{enum*}[*](4)
-\newenvironment{task}{\begin{minipage}{.6\linewidth}\begin{enum*}}{\end{enum*}\end{minipage}}
-'''
+		'parent': 'enum*',
+		'code': '\\newenvironment{task}{\\begin{minipage}{.6\\linewidth}\\begin{enum*}}{\\end{enum*}\\end{minipage}}\n'
 	},
 	{
 		'name': 'dang',
@@ -105,6 +117,13 @@ pacman = [
 		'cmd': '\\dg',
 		'parent': None,
 		'code': '\\newcommand{\\dg}{^\\circ}\n'
+	},
+	{
+		'name': 'ii',
+		'stat': False,
+		'cmd': '\\ii',
+		'parent': None,
+		'code': '\\newcommand{\\ii}{\\item}\n'
 	},
 	{
 		'name': 'ol',
@@ -136,9 +155,7 @@ def convert(level):
 		original = o.readlines()
 		for i, line in enumerate(original):
 			for pkg in pkgs:
-				if pkg['name'] in parents:
-					pkg['stat'] = True
-				if pkg['cmd'] in line:
+				if pkg['name'] in parents or pkg['cmd'] in line:
 					parent = pkg['parent']
 					if parent:
 						parents.append(parent)
