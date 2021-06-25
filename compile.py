@@ -3,128 +3,14 @@ from glob import glob
 from colorama import Fore
 from timeit import default_timer as timer
 
-pacman = [
-	{
-		'name': 'array',
-		'cmd': '\\begin{tabular}',
-		'parent': None,
-		'code': '\\usepackage{array}\n'
-	},
-	{
-		'name': 'mhchem',
-		'cmd': '\\ce{',
-		'parent': None,
-		'code': '\\usepackage{mhchem}\n'
-	},
-	{
-		'name': 'multirow',
-		'cmd': '\\multirow{',
-		'parent': None,
-		'code': '\\usepackage{multirow}\n'
-	},
-	{
-		'name': 'xcolor',
-		'cmd': '\\color{',
-		'parent': None,
-		'code': '\\usepackage{xcolor}\n'
-	},
-	{
-		'name': 'tkz-euclide',
-		'cmd': '\\tkz',
-		'parent': None,
-		'code': '\\usepackage{tkz-euclide}\n'
-	},
-	{
-		'name': 'tikz',
-		'cmd': '\\begin{tikzpicture}',
-		'parent': None,
-		'code': '\\usepackage{tikz}\n'
-	},
-	{
-		'name': 'tikz.matrix',
-		'cmd': '\\matrix',
-		'parent': 'tikz',
-		'code': '\\usetikzlibrary{matrix}\n'
-	},
-	{
-		'name': 'mini',
-		'cmd': '\\begin{mini}',
-		'parent': None,
-		'code': '\\newenvironment{mini}[1][.6]{\\begin{minipage}{#1\\linewidth}}{\\end{minipage}}\n'
-	},
-	{
-		'name': 'tasks',
-		'cmd': '\\begin{tasks}',
-		'parent': None,
-		'code': '\\usepackage{tasks}\n'
-	},
-	{
-		'name': 'enum',
-		'cmd': '\\begin{enum}',
-		'parent': 'tasks',
-		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
-	},
-	{
-		'name': 'enum*',
-		'cmd': '\\begin{enum*}',
-		'parent': 'tasks',
-		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)\n'
-	},
-	{
-		'name': 'task',
-		'cmd': '\\begin{task}',
-		'parent': 'enum*',
-		'code': '\\newenvironment{task}{\\begin{minipage}{.6\\linewidth}\\begin{enum*}}{\\end{enum*}\\end{minipage}}\n'
-	},
-	{
-		'name': 'dang',
-		'cmd': '\\dang',
-		'parent': None,
-		'code': '\\newcommand{\\dang}{\\measuredangle}\n'
-	},
-	{
-		'name': 'dg',
-		'cmd': '\\dg',
-		'parent': None,
-		'code': '\\newcommand{\\dg}{^\\circ}\n'
-	},
-	{
-		'name': 'ii',
-		'cmd': '\\ii',
-		'parent': None,
-		'code': '\\newcommand{\\ii}{\\item}\n'
-	},
-	{
-		'name': 'ol',
-		'cmd': '\\ol',
-		'parent': None,
-		'code': '\\newcommand{\\ol}{\\overline}\n'
-	},
-	{
-		'name': 'GA',
-		'cmd': '\\GA',
-		'parent': None,
-		'code': '\\DeclareMathOperator{\\GA}{GA}\n'
-	},
-	{
-		'name': 'GR',
-		'cmd': '\\GR',
-		'parent': None,
-		'code': '\\DeclareMathOperator{\\GR}{GR}\n'
-	}
-]
-for pkg in pacman:
-	pkg['stat'] = False
-
-def convert(level):
-	pkgs = list(reversed(pacman))
+def convert(level, pacman):
 	parents = []
 	total = 0
 	with open(level, 'r') as o:
 		original = o.readlines()
 		for i, line in enumerate(original):
-			for pkg in pkgs:
-				if pkg['name'] in parents or pkg['cmd'] in line:
+			for pkg in pacman:
+				if pkg['id'] in parents or pkg['cmd'] in line:
 					parent = pkg['parent']
 					if parent:
 						parents.append(parent)
@@ -136,7 +22,7 @@ def convert(level):
 						contents.append(line)
 					if i > 0:
 						contents.append('\\end{document}')
-					for pkg in pkgs:
+					for pkg in pacman:
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
 							pkg['stat'] = False
@@ -178,11 +64,124 @@ def compile(*levels):
 		levels = glob('levels/*.tex')
 	else:
 		levels = [f'levels/{x}.tex' for x in levels]
+	pacman = [
+		{
+			'id': 'array',
+			'cmd': '\\begin{tabular}',
+			'parent': None,
+			'code': '\\usepackage{array}\n'
+		},
+		{
+			'id': 'mhchem',
+			'cmd': '\\ce{',
+			'parent': None,
+			'code': '\\usepackage{mhchem}\n'
+		},
+		{
+			'id': 'multirow',
+			'cmd': '\\multirow{',
+			'parent': None,
+			'code': '\\usepackage{multirow}\n'
+		},
+		{
+			'id': 'xcolor',
+			'cmd': '\\color{',
+			'parent': None,
+			'code': '\\usepackage{xcolor}\n'
+		},
+		{
+			'id': 'tikz',
+			'cmd': '\\begin{tikzpicture}',
+			'parent': None,
+			'code': '\\usepackage{tikz}\n'
+		},
+		{
+			'id': 'tikz.matrix',
+			'cmd': '\\matrix',
+			'parent': 'tikz',
+			'code': '\\usetikzlibrary{matrix}\n'
+		},
+		{
+			'id': 'tkz-euclide',
+			'cmd': '\\tkz',
+			'parent': None,
+			'code': '\\usepackage{tkz-euclide}\n'
+		},
+		{
+			'id': 'tasks',
+			'cmd': '\\begin{tasks}',
+			'parent': None,
+			'code': '\\usepackage{tasks}\n'
+		},
+		{
+			'id': 'enum',
+			'cmd': '\\begin{enum}',
+			'parent': 'tasks',
+			'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
+		},
+		{
+			'id': 'enum*',
+			'cmd': '\\begin{enum*}',
+			'parent': 'tasks',
+			'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)\n'
+		},
+		{
+			'id': 'task',
+			'cmd': '\\begin{task}',
+			'parent': 'enum*',
+			'code': '\\newenvironment{task}{\\begin{minipage}{.6\\linewidth}\\begin{enum*}}{\\end{enum*}\\end{minipage}}\n'
+		},
+		{
+			'id': 'mini',
+			'cmd': '\\begin{mini}',
+			'parent': None,
+			'code': '\\newenvironment{mini}[1][.6]{\\begin{minipage}{#1\\linewidth}}{\\end{minipage}}\n'
+		},
+		{
+			'id': 'dang',
+			'cmd': '\\dang',
+			'parent': None,
+			'code': '\\newcommand{\\dang}{\\measuredangle}\n'
+		},
+		{
+			'id': 'dg',
+			'cmd': '\\dg',
+			'parent': None,
+			'code': '\\newcommand{\\dg}{^\\circ}\n'
+		},
+		{
+			'id': 'ii',
+			'cmd': '\\ii',
+			'parent': None,
+			'code': '\\newcommand{\\ii}{\\item}\n'
+		},
+		{
+			'id': 'ol',
+			'cmd': '\\ol',
+			'parent': None,
+			'code': '\\newcommand{\\ol}{\\overline}\n'
+		},
+		{
+			'id': 'GA',
+			'cmd': '\\GA',
+			'parent': None,
+			'code': '\\DeclareMathOperator{\\GA}{GA}\n'
+		},
+		{
+			'id': 'GR',
+			'cmd': '\\GR',
+			'parent': None,
+			'code': '\\DeclareMathOperator{\\GR}{GR}\n'
+		}
+	]
+	pacman.reverse()
+	for pkg in pacman:
+		pkg['stat'] = False
 	total = 0
 	for level in levels:
 		if os.path.exists(level):
 			print(f'{Fore.LIGHTGREEN_EX}File {Fore.LIGHTCYAN_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images...')
-			total += convert(level)
+			total += convert(level, pacman)
 		else:
 			print(f'{Fore.LIGHTRED_EX}Error! The file {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTRED_EX}does not exist.')
 	end = timer()
