@@ -139,7 +139,7 @@ def convert(level):
 					for pkg in pkgs:
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
-						pkg['stat'] = False
+							pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
 				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTCYAN_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
