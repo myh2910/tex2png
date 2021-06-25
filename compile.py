@@ -6,147 +6,116 @@ from timeit import default_timer as timer
 pacman = [
 	{
 		'name': 'array',
-		'stat': False,
 		'cmd': '\\begin{tabular}',
 		'parent': None,
 		'code': '\\usepackage{array}\n'
 	},
 	{
 		'name': 'mhchem',
-		'stat': False,
 		'cmd': '\\ce{',
 		'parent': None,
 		'code': '\\usepackage{mhchem}\n'
 	},
 	{
 		'name': 'multirow',
-		'stat': False,
 		'cmd': '\\multirow{',
 		'parent': None,
 		'code': '\\usepackage{multirow}\n'
 	},
 	{
 		'name': 'xcolor',
-		'stat': False,
 		'cmd': '\\color{',
 		'parent': None,
 		'code': '\\usepackage{xcolor}\n'
 	},
 	{
 		'name': 'tkz-euclide',
-		'stat': False,
 		'cmd': '\\tkz',
 		'parent': None,
 		'code': '\\usepackage{tkz-euclide}\n'
 	},
 	{
 		'name': 'tikz',
-		'stat': False,
 		'cmd': '\\begin{tikzpicture}',
 		'parent': None,
-		'code': r'''\usepackage{tikz}
-\usetikzlibrary{calc,scopes,shapes.geometric}
-'''
-	},
-	{
-		'name': 'tikz.angles',
-		'stat': False,
-		'cmd': 'angle',
-		'parent': 'tikz',
-		'code': '\\usetikzlibrary{angles,quotes}\n'
-	},
-	{
-		'name': 'tikz.intersections',
-		'stat': False,
-		'cmd': 'intersection',
-		'parent': 'tikz',
-		'code': '\\usetikzlibrary{intersections}\n'
+		'code': '\\usepackage{tikz}\n'
 	},
 	{
 		'name': 'tikz.matrix',
-		'stat': False,
 		'cmd': '\\matrix',
 		'parent': 'tikz',
 		'code': '\\usetikzlibrary{matrix}\n'
 	},
 	{
 		'name': 'mini',
-		'stat': False,
 		'cmd': '\\begin{mini}',
 		'parent': None,
-		'code': '\\newenvironment{mini}{\\begin{minipage}{.6\\linewidth}}{\\end{minipage}}\n'
+		'code': '\\newenvironment{mini}[1][.6]{\\begin{minipage}{#1\\linewidth}}{\\end{minipage}}\n'
 	},
 	{
 		'name': 'tasks',
-		'stat': False,
 		'cmd': '\\begin{tasks}',
 		'parent': None,
 		'code': '\\usepackage{tasks}\n'
 	},
 	{
 		'name': 'enum',
-		'stat': False,
 		'cmd': '\\begin{enum}',
 		'parent': 'tasks',
 		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum}[*]\n'
 	},
 	{
 		'name': 'enum*',
-		'stat': False,
 		'cmd': '\\begin{enum*}',
 		'parent': 'tasks',
 		'code': '\\NewTasksEnvironment[label=\\Alph*)]{enum*}[*](4)\n'
 	},
 	{
 		'name': 'task',
-		'stat': False,
 		'cmd': '\\begin{task}',
 		'parent': 'enum*',
 		'code': '\\newenvironment{task}{\\begin{minipage}{.6\\linewidth}\\begin{enum*}}{\\end{enum*}\\end{minipage}}\n'
 	},
 	{
 		'name': 'dang',
-		'stat': False,
 		'cmd': '\\dang',
 		'parent': None,
 		'code': '\\newcommand{\\dang}{\\measuredangle}\n'
 	},
 	{
 		'name': 'dg',
-		'stat': False,
 		'cmd': '\\dg',
 		'parent': None,
 		'code': '\\newcommand{\\dg}{^\\circ}\n'
 	},
 	{
 		'name': 'ii',
-		'stat': False,
 		'cmd': '\\ii',
 		'parent': None,
 		'code': '\\newcommand{\\ii}{\\item}\n'
 	},
 	{
 		'name': 'ol',
-		'stat': False,
 		'cmd': '\\ol',
 		'parent': None,
 		'code': '\\newcommand{\\ol}{\\overline}\n'
 	},
 	{
 		'name': 'GA',
-		'stat': False,
 		'cmd': '\\GA',
 		'parent': None,
 		'code': '\\DeclareMathOperator{\\GA}{GA}\n'
 	},
 	{
 		'name': 'GR',
-		'stat': False,
 		'cmd': '\\GR',
 		'parent': None,
 		'code': '\\DeclareMathOperator{\\GR}{GR}\n'
 	}
 ]
+for pkg in pacman:
+	pkg['stat'] = False
+
 def convert(level):
 	pkgs = list(reversed(pacman))
 	parents = []
@@ -170,10 +139,10 @@ def convert(level):
 					for pkg in pkgs:
 						if pkg['stat']:
 							contents.insert(2, pkg['code'])
-							pkg['stat'] = False
+						pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
-				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTYELLOW_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
+				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTCYAN_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
 				os.system(f'latexmk -quiet -cd- -outdir={dirs[0]} {tex_file}')
 				parents = []
 				total += 1
@@ -212,7 +181,7 @@ def compile(*levels):
 	total = 0
 	for level in levels:
 		if os.path.exists(level):
-			print(f'{Fore.LIGHTGREEN_EX}File {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images...')
+			print(f'{Fore.LIGHTGREEN_EX}File {Fore.LIGHTCYAN_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images...')
 			total += convert(level)
 		else:
 			print(f'{Fore.LIGHTRED_EX}Error! The file {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTRED_EX}does not exist.')

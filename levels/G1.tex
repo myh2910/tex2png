@@ -75,18 +75,23 @@ $3$
 %%p07
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\coordinate (A) at (-20:2.5);
-		\coordinate (B) at (180:2.5);
-		\coordinate (C) at (-98:2.5);
-		\coordinate (D) at (barycentric cs:A=-2,C=5);
-		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
-			\pic["$41\dg$"] {angle=B--A--C};
-			\pic["$x$"] {angle=C--B--A};
-			\pic["$80\dg$"] {angle=B--C--D};
-		}
-		\draw[dashed,thick] (C) -- (D);
-		\draw[thick] (A) node[right] {$A$} -- (B) node[left] {$B$} -- (C) node[below] {$C$} -- (A);
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoint(-20:\r){A}
+		\tkzDefPoint(180:\r){B}
+		\tkzDefPoint(-98:\r){C}
+		\tkzDefBarycentricPoint(A=-2,C=5) \tkzGetPoint{D}
+		\def\a{6mm}
+		\tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A B,C,D)
+		\tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A B,C,D)
+		\tkzLabelAngle(B,A,C){$41\dg$}
+		\tkzLabelAngle(C,B,A){$x$}
+		\tkzLabelAngle(B,C,D){$80\dg$}
+		\tkzDrawPolygon(A,B,C)
+		\tkzDrawSegment[dashed](C,D)
+		\tkzLabelPoints[right](A)
+		\tkzLabelPoints[left](B)
+		\tkzLabelPoints[below](C)
 	\end{tikzpicture}
 \end{figure}
 %%a07
@@ -101,16 +106,21 @@ $39\dg$
 %%p08
 En la figura, calcular $\alpha$.
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\coordinate (A) at (-160:2.5);
-		\coordinate (B) at (120:2.5);
-		\coordinate (C) at (-30:2.5);
-		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
-			\pic["$75\dg$"] {angle=C--A--B};
-			\pic["$\alpha$"] {angle=A--B--C};
-			\pic["$40\dg$"] {angle=B--C--A};
-		}
-		\draw[thick] (A) node[below left] {$A$} -- (B) node[above] {$B$} -- (C) node[below right] {$C$} -- (A);
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoint(-160:\r){A}
+		\tkzDefPoint(120:\r){B}
+		\tkzDefPoint(-30:\r){C}
+		\def\a{6mm}
+		\tkzFillAngles[size=\a,fill=blue,opacity=.2](C,A,B A,B,C B,C,A)
+		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C B,C,A)
+		\tkzLabelAngle(C,A,B){$75\dg$}
+		\tkzLabelAngle(A,B,C){$\alpha$}
+		\tkzLabelAngle(B,C,A){$40\dg$}
+		\tkzDrawPolygon(A,B,C)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below right](C)
 	\end{tikzpicture}
 \end{figure}
 %%a08
@@ -125,16 +135,21 @@ $65\dg$
 %%p09
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\coordinate (A) at (-150:2.5);
-		\coordinate (B) at (-30:2.5);
-		\coordinate (C) at (60:2.5);
-		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
-			\pic["$3x$"] {angle=B--A--C};
-			\pic["$5x$"] {angle=C--B--A};
-			\pic["$4x$"] {angle=A--C--B};
-		}
-		\draw[thick] (A) node[below left] {$A$} -- (B) node[below right] {$B$} -- (C) node[above] {$C$} -- (A);
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoint(-150:\r){A}
+		\tkzDefPoint(-30:\r){B}
+		\tkzDefPoint(60:\r){C}
+		\def\a{6mm}
+		\tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A A,C,B)
+		\tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A A,C,B)
+		\tkzLabelAngle(B,A,C){$3x$}
+		\tkzLabelAngle(C,B,A){$5x$}
+		\tkzLabelAngle(A,C,B){$4x$}
+		\tkzDrawPolygon(A,B,C)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[below right](B)
+		\tkzLabelPoints[above](C)
 	\end{tikzpicture}
 \end{figure}
 %%a09
@@ -171,8 +186,10 @@ VVV
 \begin{mini}
 	Hallar la medida del \'angulo interior del pol\'igono regular mostrado.
 	\begin{center}
-		\begin{tikzpicture}
-			\node [draw,thick,regular polygon,regular polygon sides=5,minimum size=4cm] {};
+		\begin{tikzpicture}[thick]
+			\tkzDefPoints{0/0/P0,0/2.5/P1}
+			\tkzDefRegPolygon[sides=5](P0,P1)
+			\tkzDrawPolygon(P1,P...,P5)
 		\end{tikzpicture}
 	\end{center}
 \end{mini}
@@ -188,19 +205,19 @@ $108\dg$
 %%p12
 Calcular ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\coordinate (v0) at (0,0);
-		\coordinate (v1) at (0,4);
-		\coordinate (v2) at (-6.4,0);
-		\path [name path=p1] (v1) -- ++ (-171:6.4);
-		\path [name path=p2] (v2) -- ++ (54:4.2);
-		{ [every path/.style={draw,line width=1pt,angle radius=5mm,angle eccentricity=1.75},name intersections={of=p1 and p2, by={v3}}]
-			\pic["$3x$"] {angle=v3--v1--v0};
-			\pic["$2x$"] {angle=v0--v2--v3};
-			\pic["$x$"] {angle=v2--v3--v1};
-			\pic {right angle=v1--v0--v2};
-		}
-		\draw[thick] (v1) -- (v0) -- (v2) -- (v3) -- (v1);
+	\begin{tikzpicture}[thick]
+		\tkzDefPoints{0/0/A,0/4/B,-6.4/0/C}
+		\tkzDefPointBy[rotation=center B angle -81](A) \tkzGetPoint{E}
+		\tkzDefPointBy[rotation=center C angle 54](A) \tkzGetPoint{F}
+		\tkzInterLL(B,E)(C,F) \tkzGetPoint{D}
+		\tkzMarkRightAngle[size=.3,fill=blue!20](B,A,C)
+		\def\r{5mm}
+		\tkzFillAngles[size=\r,fill=blue,opacity=.2](D,B,A A,C,D C,D,B)
+		\tkzMarkAngles[size=\r,mark=none](D,B,A A,C,D C,D,B)
+		\tkzLabelAngle(D,B,A){$3x$}
+		\tkzLabelAngle(A,C,D){$2x$}
+		\tkzLabelAngle(C,D,B){$5x$}
+		\tkzDrawPolygon(B,A,C,D)
 	\end{tikzpicture}
 \end{figure}
 %%a12
