@@ -24,7 +24,7 @@ def convert(level, pacman):
 						contents.append('\\end{document}')
 					for pkg in pacman:
 						if pkg['stat']:
-							contents.insert(2, pkg['code'])
+							contents.insert(insert_point, pkg['code'])
 							pkg['stat'] = False
 					t.seek(0)
 					t.writelines(contents)
@@ -41,16 +41,18 @@ def convert(level, pacman):
 				file_type = types[0][2:]
 				tex_file = f'{dirs[0]}{file_type}.tex'
 				with open(tex_file, 'w') as t:
-					t.write(r'''\documentclass[margin=1pt,preview]{standalone}
-\usepackage{amsmath,amssymb,cmbright}
-''')
+					t.write('\\documentclass[margin=1pt,preview]{standalone}\n')
+					insert_point = 2
 					if 'sp' in types:
 						t.write('\\usepackage[spanish]{babel}\n')
+						insert_point += 1
+					t.write('\\usepackage{amsmath,amssymb,cmbright}\n')
 					if file_type[0] == 'r':
 						t.write(r'''\usepackage{xcolor}
 \begin{document}
 \color{red}
 ''')
+						insert_point += 1
 					else:
 						t.write('\\begin{document}\n')
 			elif i < len(original) - 1:
