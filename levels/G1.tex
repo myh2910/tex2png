@@ -215,34 +215,48 @@ $27\dg$
 %%p13
 Calcular ``$\theta$'' en:
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\def\r{5}
-		\coordinate (A) at (-160:\r);
-		\coordinate (B) at (164:\r);
-		\coordinate (C) at (-12:\r);
-		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.9}]
-			\pic["$2\theta$"] {angle=C--A--B};
-			\pic["$\theta+30\dg$"] {angle=A--B--C};
-			\pic["$18\dg$"] {angle=B--C--A};
-		}
-		\draw[thick] (A) -- (B) -- (C) -- (A);
+	\begin{tikzpicture}[thick]
+		\def\r{4.5}
+		\def\a{5mm}
+		\tkzDefPoint(-160:\r){A}
+		\tkzDefPoint(164:\r){B}
+		\tkzDefPoint(-12:\r){C}
+		\tkzFillAngles[size=\a,fill=blue,opacity=.2](C,A,B A,B,C)
+		\tkzFillAngle[size=8mm,fill=blue,opacity=.2](B,C,A)
+		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C)
+		\tkzMarkAngle[size=8mm,mark=none](B,C,A)
+		\tkzLabelAngle[shift={(0,-.1)}](C,A,B){$2\theta$}
+		\tkzLabelAngle[shift={(.2,0)}](A,B,C){$\theta+30\dg$}
+		\tkzLabelAngle[pos=1.7](B,C,A){$18\dg$}
+		\tkzDrawPolygon(A,B,C)
 	\end{tikzpicture}
 \end{figure}
+%%a13
+\begin{task}
+	* $42\dg$
+	* $45\dg$
+	* $44\dg$
+	* $48\dg$
+\end{task}
 %%r13
 $44\dg$
 %%p14
 En el romboide $ABCD$, calcular ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (75:3);
-		\coordinate (D) at (4,0);
-		\coordinate (C) at ($(B) + (D)$);
-		{ [every path/.style={draw,line width=1pt,angle radius=6mm,angle eccentricity=1.7}]
-			\pic["$7x$"] {angle=A--B--C};
-			\pic["$5x$"] {angle=B--C--D};
-		}
-		\draw[thick] (A) node[below left] {$A$} -- (B) node[above left] {$B$} -- (C) node[above right] {$C$} -- (D) node[below right] {$D$} -- (A);
+	\begin{tikzpicture}[thick]
+		\tkzDefPoints{0/0/A,4/0/D}
+		\tkzDefPoint(75:3){B}
+		\tkzDefParallelogram(B,A,D) \tkzGetPoint{C}
+		\def\r{6mm}
+		\tkzFillAngles[size=\r,fill=blue,opacity=.2](A,B,C B,C,D)
+		\tkzMarkAngles[size=\r,mark=none](A,B,C B,C,D)
+		\tkzLabelAngle(A,B,C){$7x$}
+		\tkzLabelAngle(B,C,D){$5x$}
+		\tkzDrawPolygon(A,B,C,D)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above left](B)
+		\tkzLabelPoints[above right](C)
+		\tkzLabelPoints[below right](D)
 	\end{tikzpicture}
 \end{figure}
 %%a14
@@ -253,7 +267,7 @@ En el romboide $ABCD$, calcular ``$x$''.
 	* $8\dg$
 \end{task}
 %%r14
-$12\dg$
+$15\dg$
 %%p15.sp
 \begin{mini}
 	¿Cu\'antas diagonales se pueden trazar en total en un pol\'igono de $28$ lados?

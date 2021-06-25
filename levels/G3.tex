@@ -1,0 +1,171 @@
+%%p01.sp
+\begin{mini}
+	Si $CD=\ce{10u}$, hallar la longitud del segmento que une los puntos medios de $\ol{AC}$ y $\ol{BD}$.
+\end{mini}
+%%a01
+\begin{task}
+	* $\ce{4u}$
+	* $\ce{3u}$
+	* $\ce{3,5u}$
+	* $\ce{6u}$
+\end{task}
+%%r01
+$\ce{4u}$
+%%p02
+En la figura, $AB=BC=CD$. Calcular el valor de ``$\alpha$''.
+%%a02
+\begin{task}
+	* $32\dg$
+	* $68\dg$
+	* $44\dg$
+	* $70\dg$
+\end{task}
+%%r02
+$68\dg$
+%%p03
+En la figura, calcular ``$x$''.
+%%a03
+\begin{task}
+	* $60\dg$
+	* $80\dg$
+	* $75\dg$
+	* $120\dg$
+\end{task}
+%%r03
+$80\dg$
+%%p04
+Calcular el valor de ``$x$'', en:
+%%a04
+\begin{task}
+	* $100\dg$
+	* $120\dg$
+	* $130\dg$
+	* $140\dg$
+\end{task}
+%%r04
+$130\dg$
+%%p05
+Si $ABCD$ es un paralelogramo, calcular ``$x$''.
+%%a05
+\begin{task}
+	* $24\dg$
+	* $36\dg$
+	* $20\dg$
+	* $72\dg$
+\end{task}
+%%r05
+$36\dg$
+%%p06
+En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\x{3}
+		\def\y{.8}
+		\tkzDefPoints{\y/0/O1,-\y/0/O2}
+		\tkzDefPoint(110:\x){B1}
+		\tkzDefPoint(70:\x){C1}
+		\tkzDefParallelogram(C1,O,O1) \tkzGetPoint{C}
+		\tkzDefParallelogram(O2,O,B1) \tkzGetPoint{B}
+		\tkzDefParallelogram(O1,C,B) \tkzGetPoint{A}
+		\tkzDefParallelogram(C,B,O2) \tkzGetPoint{D}
+		\tkzFillAngles[size=4mm,fill=green,opacity=.2](D,A,B A,B,C B,C,D C,D,A)
+		\tkzMarkAngles[size=4mm,mark=none](D,A,B A,B,C B,C,D C,D,A)
+		\tkzLabelAngle[pos=1](D,A,B){$70\dg$}
+		\tkzLabelAngle[pos=1](A,B,C){$\beta$}
+		\tkzLabelAngle[pos=1](B,C,D){$2\alpha-5\dg$}
+		\tkzLabelAngle[pos=1](C,D,A){$\alpha+5\dg$}
+		\tkzDrawPolygon(A,B,C,D)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above left](B)
+		\tkzLabelPoints[above right](C)
+		\tkzLabelPoints[below right](D)
+	\end{tikzpicture}
+\end{figure}
+%%a06
+\begin{minipage}{1.4\linewidth}
+	\begin{task}
+		* $124\dg$ y $12\dg$
+		* $36\dg$ y $20\dg$
+		* $120\dg$ y $70\dg$
+		* $110\dg$ y $60\dg$
+	\end{task}
+\end{minipage}
+%%r06
+$110\dg$ y $60\dg$
+%%p08.sp
+\begin{mini}
+	¿Cu\'al es el n\'umero de lados de aquel pol\'igono regular cuyo \'angulo interior es $2$ veces su \'angulo exterior?
+\end{mini}
+%%r08
+$6$
+%%p09.sp
+\begin{mini}
+	Si se triplica el n\'umero de lados de un pol\'igono, la suma de sus \'angulos internos queda quintuplicada. ¿C\'omo se llama dicho pol\'igono?
+\end{mini}
+%%r09
+Cuadrado
+%%p10.sp
+\begin{mini}
+	En un pol\'igono regular, el doble del n\'umero de diagonales es $5$ veces del n\'umero de lados. Luego, la medida de su \'angulo interior es:
+\end{mini}
+%%a10
+\begin{task}
+	* $120\dg$
+	* $135\dg$
+	* $180\dg$
+	* $105\dg$
+\end{task}
+%%r10
+$135\dg$
+%%p11
+Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\tkzDefPoints{0/0/O,1.1*\r/0/A}
+		\tkzDefPoint(106:\r){B}
+		\tkzDefParallelogram(B,O,A) \tkzGetPoint{C}
+		\tkzFillAngles[size=4mm,fill=green,opacity=.2](A,O,B O,B,C)
+		\tkzMarkAngles[size=4mm,mark=none](A,O,B O,B,C)
+		\tkzLabelAngle[shift={(.5,-.4)}](A,O,B){$4x+54\dg$}
+		\tkzLabelAngle[shift={(.3,.2)}](O,B,C){$8x-30\dg$}
+		\tkzDrawPolygon(B,O,A,C)
+	\end{tikzpicture}
+\end{figure}
+%%r11
+$13\dg$
+%%p13.sp
+\begin{mini}
+	Si la relaci\'on entre el \'angulo interior y central de un pol\'igono regular es como $3$ a $2$, hallar el n\'umero de lados del pol\'igono.
+\end{mini}
+%%a13
+\begin{task}
+	* $3$
+	* $2$
+	* $5$
+	* $4$
+\end{task}
+%%r13
+$5$
+%%p14
+Calcula el valor de ``$x$'' del gr\'afico.
+%%a14
+\begin{task}
+	* $30\dg$
+	* $35\dg$
+	* $70\dg$
+	* $110\dg$
+\end{task}
+%%r14
+$35\dg$
+%%p15
+Si el pol\'igono $ABCDE$ es regular, calcula el valor de ``$x$''.
+%%a15
+\begin{task}
+	* $108\dg$
+	* $36\dg$
+	* $54\dg$
+	* $72\dg$
+\end{task}
+%%r15
+$54\dg$

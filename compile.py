@@ -12,6 +12,13 @@ pacman = [
 		'code': '\\usepackage{array}\n'
 	},
 	{
+		'name': 'mhchem',
+		'stat': False,
+		'cmd': '\\ce{',
+		'parent': None,
+		'code': '\\usepackage{mhchem}\n'
+	},
+	{
 		'name': 'multirow',
 		'stat': False,
 		'cmd': '\\multirow{',
@@ -98,6 +105,13 @@ pacman = [
 		'cmd': '\\dg',
 		'parent': None,
 		'code': '\\newcommand{\\dg}{^\\circ}\n'
+	},
+	{
+		'name': 'ol',
+		'stat': False,
+		'cmd': '\\ol',
+		'parent': None,
+		'code': '\\newcommand{\\ol}{\\overline}\n'
 	},
 	{
 		'name': 'GA',
