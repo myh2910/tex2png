@@ -29,21 +29,20 @@ def convert(level, pacman):
 					t.seek(0)
 					t.writelines(contents)
 				print(f'{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTCYAN_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}')
-				os.system(f'latexmk -quiet -cd- -outdir={dirs[0]} {tex_file}')
+				os.system(f'latexmk -silent {tex_file}')
 				parents = []
 				total += 1
 			if '%%' in line:
-				dirs = [f'{x}/{os.path.basename(level)[:-4]}/' for x in ['tex', 'png']]
-				for d in dirs:
-					if not os.path.exists(d):
-						os.makedirs(d)
 				types = line.strip().split('.')
 				file_type = types[0][2:]
-				tex_file = f'{dirs[0]}{file_type}.tex'
+				tex_dir = f'tex/{os.path.basename(level)[:-4]}/{file_type[1:]}/'
+				if not os.path.exists(tex_dir):
+					os.makedirs(tex_dir)
+				tex_file = f'{tex_dir}{file_type}.tex'
 				with open(tex_file, 'w') as t:
 					t.write('\\documentclass[margin=1pt,preview]{standalone}\n')
 					insert_point = 2
-					if 'sp' in types:
+					if 'sp' in types[1:]:
 						t.write('\\usepackage[spanish]{babel}\n')
 						insert_point += 1
 					t.write('\\usepackage{amsmath,amssymb,cmbright}\n')
