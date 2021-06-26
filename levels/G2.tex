@@ -14,6 +14,13 @@ Calcula el valor de ``$x$''.
 		\tkzMarkSegments[mark=||](v1,v2 v2,v3)
 	\end{tikzpicture}
 \end{figure}
+%%a01
+\begin{task}
+	* $34\dg$
+	* $41\dg$
+	* $44\dg$
+	* $49\dg$
+\end{task}
 %%r01
 $44\dg$
 %%p02.sp
@@ -206,12 +213,12 @@ Calcula el valor de ``$x$''.
 	\end{tikzpicture}
 \end{figure}
 %%a08
-\begin{enum}
+\begin{task}
 	* $14\dg$
 	* $13\dg$
 	* $12\dg$
 	* $15\dg$
-\end{enum}
+\end{task}
 %%r08
 $12\dg$
 %%p09
@@ -247,6 +254,22 @@ $12\dg$
 $80\dg$
 %%p10
 Calcula el valor de ``$x$'' en el gr\'afico mostrado.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\tkzDefPoints{-\r/\r/A,-\r/0/B,0/-\r/C1,2*\r/-\r/D1,0/\r/E}
+		\def\k{1.2}
+		\tkzDefBarycentricPoint(B=1,C1=\k) \tkzGetPoint{C}
+		\tkzDefBarycentricPoint(E=1,D1=1+2*\k) \tkzGetPoint{D}
+		\tkzMarkRightAngle[size=.4,fill=yellow!20](B,A,E)
+		\def\a{5mm}
+		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,B,A D,C,B E,D,C A,E,D)
+		\tkzMarkAngles[size=\a,mark=none](C,B,A D,C,B E,D,C A,E,D)
+		\tkzDrawPolygon(A,B,C,D,E)
+		\tkzLabelAngles(C,B,A D,C,B A,E,D){$3x$}
+		\tkzLabelAngle(E,D,C){$x$}
+	\end{tikzpicture}
+\end{figure}
 %%a10
 \begin{task}
 	* $30\dg$
@@ -281,6 +304,36 @@ $45\dg$
 $\ce{7cm}$
 %%p12
 Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoints{0/0/f,.7*\r/-\r/k}
+		\tkzDefPointBy[rotation=center k angle -125](f) \tkzGetPoint{j}
+		\tkzDefPointBy[rotation=center j angle -115](k) \tkzGetPoint{i1}
+		\tkzDefBarycentricPoint(i1=1,j=.3) \tkzGetPoint{i}
+		\tkzDefPointBy[rotation=center f angle 110](k) \tkzGetPoint{g1}
+		\tkzDefBarycentricPoint(g1=1,f=.1) \tkzGetPoint{g}
+		\tkzDefPointBy[rotation=center g angle 135](f) \tkzGetPoint{h1}
+		\tkzDefPointBy[rotation=center i angle -140](j) \tkzGetPoint{h2}
+		\tkzInterLL(g,h1)(i,h2) \tkzGetPoint{h}
+		\def\a{5mm}
+		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
+		\tkzMarkAngles[size=\a,mark=none](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
+		\tkzDrawPolygon(f,g,h,i,j,k)
+		\tkzLabelAngle[pos=1.3](k,f,g){$5x-15\dg$}
+		\tkzLabelAngle(f,g,h){$5x+10\dg$}
+		\tkzLabelAngle[pos=1.1](g,h,i){$3x+20\dg$}
+		\tkzLabelAngle[pos=1.3](h,i,j){$5x+15\dg$}
+		\tkzLabelAngle(i,j,k){$4x+15\dg$}
+		\tkzLabelAngle[pos=.9](j,k,f){$5x$}
+		\tkzLabelPoints[left](f)
+		\tkzLabelPoints[above left](g)
+		\tkzLabelPoints[above right](h)
+		\tkzLabelPoints[right](i)
+		\tkzLabelPoints[below right](j)
+		\tkzLabelPoints[below left](k)
+	\end{tikzpicture}
+\end{figure}
 %%a12
 \begin{task}
 	* $10\dg$
@@ -292,6 +345,25 @@ Calcula el valor de ``$x$''.
 $25\dg$
 %%p13
 En la figura, $AB=BC=CD$. Calcular el valor de ``$\alpha$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{4}
+		\tkzDefPoint(0,0){A}
+		\tkzDefPoint(56:\r){B}
+		\tkzDefPointBy[rotation=center B angle 68](A) \tkzGetPoint{C}
+		\tkzDefPointBy[rotation=center C angle -124](B) \tkzGetPoint{D}
+		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](A,B,C B,D,C)
+		\tkzMarkAngles[size=5mm,mark=none](A,B,C B,D,C)
+		\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
+		\tkzLabelAngle[pos=1.2](B,D,C){$28\dg$}
+		\tkzDrawPolygon(A,B,D)
+		\tkzDrawSegment(B,C)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below](C)
+		\tkzLabelPoints[below right](D)
+	\end{tikzpicture}
+\end{figure}
 %%a13
 \begin{task}
 	* $32\dg$
@@ -316,6 +388,25 @@ $68\dg$
 $71$
 %%p15
 Caucular ``$x$'' en:
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\tkzDefPoints{2.8/0/A,0/0/B}
+		\tkzDefPointBy[rotation=center B angle 118](A) \tkzGetPoint{C}
+		\tkzDefPointBy[rotation=center C angle 108](B) \tkzGetPoint{D1}
+		\tkzDefPointBy[homothety=center C ratio 1.3](D1) \tkzGetPoint{D}
+		\tkzDefPointBy[rotation=center D angle 98](C) \tkzGetPoint{E1}
+		\tkzDefPointBy[rotation=center A angle -128](B) \tkzGetPoint{E2}
+		\tkzInterLL(D,E1)(A,E2) \tkzGetPoint{E}
+		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](E,A,B A,B,C B,C,D C,D,E D,E,A)
+		\tkzMarkAngles[size=5mm,mark=none](E,A,B A,B,C B,C,D C,D,E D,E,A)
+		\tkzLabelAngle(E,A,B){$x+40\dg$}
+		\tkzLabelAngle(A,B,C){$x+30\dg$}
+		\tkzLabelAngle[pos=1.3](B,C,D){$x+20\dg$}
+		\tkzLabelAngle(C,D,E){$x+10\dg$}
+		\tkzLabelAngle[pos=.9](D,E,A){$x$}
+		\tkzDrawPolygon(A,B,C,D,E)
+	\end{tikzpicture}
+\end{figure}
 %%a15
 \begin{task}
 	* $92\dg$

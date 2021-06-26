@@ -73,6 +73,12 @@ def compile(*levels):
 			'code': '\\usepackage{array}\n'
 		},
 		{
+			'id': 'enumitem',
+			'cmd': '\\begin{enumerate}',
+			'parent': None,
+			'code': '\\usepackage{enumitem}\n'
+		},
+		{
 			'id': 'mhchem',
 			'cmd': '\\ce{',
 			'parent': None,
