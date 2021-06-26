@@ -91,12 +91,6 @@ def compile(*levels):
 			'code': '\\usepackage{multirow}\n'
 		},
 		{
-			'id': 'xcolor',
-			'cmd': '\\color{',
-			'parent': None,
-			'code': '\\usepackage{xcolor}\n'
-		},
-		{
 			'id': 'tikz',
 			'cmd': '\\begin{tikzpicture}',
 			'parent': None,
