@@ -33,14 +33,11 @@ En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
 		\def\x{3}
-		\def\y{.8}
-		\tkzDefPoints{\y/0/O1,-\y/0/O2}
-		\tkzDefPoint(110:\x){B1}
-		\tkzDefPoint(70:\x){C1}
-		\tkzDefParallelogram(C1,O,O1) \tkzGetPoint{C}
-		\tkzDefParallelogram(O2,O,B1) \tkzGetPoint{B}
-		\tkzDefParallelogram(O1,C,B) \tkzGetPoint{A}
-		\tkzDefParallelogram(C,B,O2) \tkzGetPoint{D}
+		\tkzDefPoints{-\x/0/A,\x/0/D,-1/\x/O1,1/\x/O2}
+		\tkzDefShiftPoint[A](70:1){B1}
+		\tkzDefShiftPoint[D](115:1){C1}
+		\tkzInterLL(A,B1)(O1,O2) \tkzGetPoint{B}
+		\tkzInterLL(D,C1)(O1,O2) \tkzGetPoint{C}
 		\tkzFillAngles[size=4mm,fill=green,opacity=.2](D,A,B A,B,C B,C,D C,D,A)
 		\tkzMarkAngles[size=4mm,mark=none](D,A,B A,B,C B,C,D C,D,A)
 		\tkzLabelAngle(D,A,B){$70\dg$}
@@ -57,14 +54,14 @@ En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 %%a02
 \begin{mini}[1.4]
 	\begin{task}
-		* $124\dg$ y $12\dg$
-		* $36\dg$ y $20\dg$
-		* $120\dg$ y $70\dg$
-		* $110\dg$ y $60\dg$
+		* $12\dg$ y $124\dg$
+		* $20\dg$ y $36\dg$
+		* $70\dg$ y $120\dg$
+		* $60\dg$ y $110\dg$
 	\end{task}
 \end{mini}
 %%r02
-$110\dg$ y $60\dg$
+$60\dg$ y $110\dg$
 %%p03
 En la figura, calcular ``$x$''.
 \begin{figure}[h]
@@ -326,6 +323,26 @@ $251\dg$
 $5$
 %%p14
 Calcula el valor de ``$x$'' del gr\'afico.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{2.8}
+		\tkzDefPoint(-177.5:\r){A}
+		\tkzDefPoint(-2.5:\r){C}
+		\tkzDefPoints{0/0/D,0/.9*\r/B}
+		\tkzFillAngles[size=5mm,fill=green,opacity=.2](D,A,B A,B,C B,C,D)
+		\tkzFillAngle[size=3.5mm,fill=green,opacity=.2](C,D,A)
+		\tkzMarkAngles[size=5mm,mark=none](D,A,B A,B,C B,C,D)
+		\tkzMarkAngle[size=3.5mm,mark=none](C,D,A)
+		\tkzDrawPolygon(A,B,C,D)
+		\tkzLabelAngles(D,A,B B,C,D){$x$}
+		\tkzLabelAngle[pos=.8](A,B,C){$3x$}
+		\tkzLabelAngle[pos=.7](C,D,A){$185\dg$}
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below right](C)
+		\tkzLabelPoints[below](D)
+	\end{tikzpicture}
+\end{figure}
 %%a14
 \begin{task}
 	* $30\dg$
@@ -335,14 +352,25 @@ Calcula el valor de ``$x$'' del gr\'afico.
 \end{task}
 %%r14
 $35\dg$
-%%p15
-Si el pol\'igono $ABCDE$ es regular, calcula el valor de ``$x$''.
+%%p15.sp
+\begin{mini}
+	Calcula la suma de las medidas de los \'angulos interiores de:
+	\begin{center}
+		\begin{tikzpicture}[thick]
+			\def\x{.8}
+			\def\y{.9}
+			\def\z{1}
+			\def\w{1.2}
+			\draw (0,0) -| (\y,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\y,2*\w) -| (0,0);
+		\end{tikzpicture}
+	\end{center}
+\end{mini}
 %%a15
 \begin{task}
-	* $108\dg$
-	* $36\dg$
-	* $54\dg$
-	* $72\dg$
+	* $2520\dg$
+	* $1440\dg$
+	* $900\dg$
+	* $2880\dg$
 \end{task}
 %%r15
-$54\dg$
+$2520\dg$

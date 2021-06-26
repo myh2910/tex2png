@@ -23,28 +23,32 @@ Calcula el valor de ``$x$''.
 \end{task}
 %%r01
 $44\dg$
-%%p02.sp
-\begin{mini}
-	Calcula la suma de las medidas de los \'angulos interiores de:
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\def\x{.8}
-			\def\y{.9}
-			\def\z{1}
-			\def\w{1.2}
-			\draw (0,0) -| (\y,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\y,2*\w) -| (0,0);
-		\end{tikzpicture}
-	\end{center}
-\end{mini}
+%%p02
+\begin{tabular}{c}
+	Si $ABCDE$ es un pol\'igono regular, calcula el valor de ``$x$''. \vspace{5pt} \\
+	\begin{tikzpicture}[thick]
+		\tkzDefPoints{0/0/O,0/2.5/P1}
+		\tkzDefRegPolygon[sides=5](O,P1)
+		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](P1,P5,P4)
+		\tkzMarkAngles[size=5mm,mark=none](P1,P5,P4)
+		\tkzDrawPolygon(P1,P...,P5)
+		\tkzLabelAngle(P1,P5,P4){$2x$}
+		\tkzLabelPoint[below left](P3){$A$}
+		\tkzLabelPoint[above left](P2){$B$}
+		\tkzLabelPoint[above](P1){$C$}
+		\tkzLabelPoint[above right](P5){$D$}
+		\tkzLabelPoint[below right](P4){$E$}
+	\end{tikzpicture}
+\end{tabular}
 %%a02
 \begin{task}
-	* $2520\dg$
-	* $1440\dg$
-	* $900\dg$
-	* $2880\dg$
+	* $108\dg$
+	* $36\dg$
+	* $54\dg$
+	* $72\dg$
 \end{task}
 %%r02
-$2520\dg$
+$54\dg$
 %%p03.sp
 \begin{mini}
 	En un tri\'angulo is\'osceles, la suma de dos \'angulos distintos es igual a $110\dg$. Entonces la suma de los \'angulos de la base es:
@@ -81,7 +85,7 @@ $140\dg$
 			\tkzGetPoint{M}
 			\tkzDefMidPoint(B,C)
 			\tkzGetPoint{N}
-			\tkzDrawPoints[size=6.5,color=yellow!50!orange](M,N)
+			\tkzDrawPoints[size=6.5,color=black,fill=yellow!20](M,N)
 			\tkzLabelPoints[below left](A)
 			\tkzLabelPoints[above](B)
 			\tkzLabelPoints[below](C)
