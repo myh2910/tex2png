@@ -1,78 +1,26 @@
-%%p01.sp
-\begin{mini}
-	Calcula la suma de las medidas de los \'angulos internos de un dec\'agono.
-\end{mini}
+%%p01.10s
+Un tri\'angulo tiene $\underline{\phantom{3}}$ v\'ertices.
 %%a01
-\begin{enum}
-	* $1080\dg$
-	* $1260\dg$
-	* $1440\dg$
-	* $900\dg$
-\end{task}
-%%r01
-$1440\dg$
-%%p02.sp
-\begin{mini}
-	¿Cu\'antas diagonales se pueden trazar en un hex\'agono?
-\end{mini}
-%%a02
-\begin{enum}
-	* $6$
-	* $9$
-	* $12$
-	* $7$
-\end{enum}
-%%r02
-$9$
-%%p03.sp
-\begin{mini}
-	¿Cu\'anto mide el \'angulo externo de un icos\'agono regular?
-\end{mini}
-%%a03
-\begin{enum}
-	* $12\dg$
-	* $16\dg$
-	* $10\dg$
-	* $18\dg$
-\end{enum}
-%%r03
-$18\dg$
-%%p04.sp
-\begin{mini}
-	¿Cu\'anto suman los \'angulos externos e internos de un icos\'agono?
-\end{mini}
-%%a04
-\begin{enum}
-	* $2800\dg$
-	* $8200\dg$
-	* $3600\dg$
-	* $4000\dg$
-\end{enum}
-%%r04
-$3600\dg$
-%%p05
-Tri\'angulo o tambi\'en llamado...?
-%%a05
-\begin{enum}
-	* Ala\'in
-	* Tr\'igono
-	* Triangulitis
-	* Cuadril\'atero
-\end{enum}
-%%r05
-Tr\'igono
-%%p06
-Un tri\'angulo tiene $\underline{\phantom{xxxxxxxx}}$ v\'ertices.
-%%a06
 \begin{enum}
 	* $4$
 	* $6$
 	* $3$
 	* $8$
 \end{enum}
-%%r06
+%%r01
 $3$
-%%p07
+%%p02.10s
+Tri\'angulo o tambi\'en llamado...?
+%%a02
+\begin{enum}
+	* Ala\'in
+	* Tr\'igono
+	* Triangulitis
+	* Cuadril\'atero
+\end{enum}
+%%r02
+Tr\'igono
+%%p03.10s
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -94,45 +42,66 @@ En la figura, hallar ``$x$''.
 		\tkzLabelPoints[below](C)
 	\end{tikzpicture}
 \end{figure}
-%%a07
+%%a03
 \begin{task}
 	* $52\dg$
 	* $39\dg$
 	* $61\dg$
 	* $121\dg$
 \end{task}
-%%r07
+%%r03
 $39\dg$
-%%p08
-En la figura, calcular $\alpha$.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\tkzDefPoint(-160:\r){A}
-		\tkzDefPoint(120:\r){B}
-		\tkzDefPoint(-30:\r){C}
-		\def\a{6mm}
-		\tkzFillAngles[size=\a,fill=blue,opacity=.2](C,A,B A,B,C B,C,A)
-		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C B,C,A)
-		\tkzLabelAngle(C,A,B){$75\dg$}
-		\tkzLabelAngle(A,B,C){$\alpha$}
-		\tkzLabelAngle(B,C,A){$40\dg$}
-		\tkzDrawPolygon(A,B,C)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above](B)
-		\tkzLabelPoints[below right](C)
-	\end{tikzpicture}
-\end{figure}
-%%a08
+%%p04.40s
+Calcula el valor de ``$\alpha$''.
+	\begin{figure}[h]
+		\begin{tikzpicture}[thick]
+			\def\r{3}
+			\tkzDefPoint(-165:\r){A}
+			\tkzDefPoint(59:\r){B}
+			\tkzDefPoint(-15:\r){C}
+			\tkzDefPointOnLine[pos=1.2](A,C)
+			\tkzGetPoint{D}
+			\tkzFillAngles[size=5mm,fill=blue,opacity=.2](C,A,B A,B,C D,C,B)
+			\tkzMarkAngles[size=5mm,mark=none](C,A,B A,B,C D,C,B)
+			\tkzLabelAngles[pos=1](C,A,B){$37\dg$}
+			\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
+			\tkzLabelAngle[pos=1](D,C,B){$112\dg$}
+			\tkzDrawPolySeg(D,A,B,C)
+		\end{tikzpicture}
+	\end{figure}
+%%a04
 \begin{task}
-	* $80\dg$
-	* $40\dg$
-	* $65\dg$
-	* $150\dg$
+	* $78\dg$
+	* $75\dg$
+	* $73\dg$
+	* $74\dg$
 \end{task}
-%%r08
-$65\dg$
-%%p09
+%%r04
+$75\dg$
+%%p05.sp.40s
+\begin{mini}
+	El per\'imetro del tri\'angulo es de $\ce{20cm}$. ¿Cu\'anto mide el lado $AC$?
+	\begin{center}
+		\begin{tikzpicture}[thick]
+			\def\r{3}
+			\def\a{16.6}
+			\tkzDefPoint(\a+146.8:\r){A}
+			\tkzDefPoint(\a:\r){B}
+			\tkzDefPoint(\a+50.42:\r){C}
+			\draw (A) node[below left] {$A$} -- node[below] {$x+5$} (B) node[below right] {$B$} -- node[above right] {$x$} (C) node[above] {$C$} -- node[above left] {$x+3$} (A);
+		\end{tikzpicture}
+	\end{center}
+\end{mini}
+%%a05
+\begin{task}
+	* $\ce{5cm}$
+	* $\ce{2cm}$
+	* $\ce{7cm}$
+	* $\ce{6cm}$
+\end{task}
+%%r05
+$\ce{7cm}$
+%%p06.40s
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -152,112 +121,45 @@ En la figura, hallar ``$x$''.
 		\tkzLabelPoints[above](C)
 	\end{tikzpicture}
 \end{figure}
-%%a09
+%%a06
 \begin{task}
 	* $15\dg$
 	* $18\dg$
 	* $20\dg$
 	* $10\dg$
 \end{task}
-%%r09
+%%r06
 $15\dg$
-%%p10.sp
-\begin{mini}
-	Escribe verdadero (V) o falso (F) seg\'un corresponda y encierra la alternativa correcta.
-	\begin{center}\vspace{-12pt}
-		\begin{tabular}{m{.01\linewidth}m{.77\linewidth}l}
-			I.&Un hex\'agono posee $9$ diagonales.&(\phantom{V}) \vspace{4pt}\\
-			II.&Un pent\'agono posee $5$ diagonales.&(\phantom{V}) \vspace{4pt}\\
-			III.&La suma de las medidas de \'angulos&\multirow{2}{*}{(\phantom{V})} \\
-			&interiores de un dodec\'agono es $1800\dg$.&
-		\end{tabular}
-	\end{center}
-\end{mini}
-%%a10
-\begin{task}
-	* VVF
-	* FFV
-	* VVV
-	* FFF
-\end{task}
-%%r10
-VVV
-%%p11
-\begin{mini}
-	Hallar la medida del \'angulo interior del pol\'igono regular mostrado.
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\tkzDefPoints{0/0/P0,0/2/P1}
-			\tkzDefRegPolygon[sides=5](P0,P1)
-			\tkzDrawPolygon(P1,P...,P5)
-		\end{tikzpicture}
-	\end{center}
-\end{mini}
-%%a11
-\begin{task}
-	* $92\dg$
-	* $120\dg$
-	* $108\dg$
-	* $140\dg$
-\end{task}
-%%r11
-$108\dg$
-%%p12
-Calcular ``$x$''.
+%%p07.100s
+Si $ABCD$ es un paralelogramo, calcular ``$x$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
-		\tkzDefPoints{0/0/A,0/4/B,-6.4/0/C}
-		\tkzDefPointBy[rotation=center B angle -81](A) \tkzGetPoint{E}
-		\tkzDefPointBy[rotation=center C angle 54](A) \tkzGetPoint{F}
-		\tkzInterLL(B,E)(C,F) \tkzGetPoint{D}
-		\tkzMarkRightAngle[size=.3,fill=blue!20](B,A,C)
-		\def\r{5mm}
-		\tkzFillAngles[size=\r,fill=blue,opacity=.2](D,B,A A,C,D C,D,B)
-		\tkzMarkAngles[size=\r,mark=none](D,B,A A,C,D C,D,B)
-		\tkzLabelAngle(D,B,A){$3x$}
-		\tkzLabelAngle(A,C,D){$2x$}
-		\tkzLabelAngle(C,D,B){$5x$}
-		\tkzDrawPolygon(B,A,C,D)
+		\def\x{4}
+		\def\y{3.8}
+		\tkzDefPoints{0/0/A,\x/0/D}
+		\tkzDefPoint(144:\y){B}
+		\tkzDefParallelogram(D,A,B) \tkzGetPoint{C}
+		\tkzFillAngles[size=5mm,fill=blue,opacity=.2](B,C,D C,D,A)
+		\tkzMarkAngles[size=5mm,mark=none](B,C,D C,D,A)
+		\tkzLabelAngle[pos=.8](B,C,D){$4x$}
+		\tkzLabelAngle(C,D,A){$x$}
+		\tkzDrawPolygon(A,B,C,D)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above left](B)
+		\tkzLabelPoints[above right](C)
+		\tkzLabelPoints[below right](D)
 	\end{tikzpicture}
 \end{figure}
-%%a12
+%%a07
 \begin{task}
-	* $13\dg$
-	* $17\dg$
-	* $14\dg$
-	* $27\dg$
+	* $24\dg$
+	* $36\dg$
+	* $20\dg$
+	* $72\dg$
 \end{task}
-%%r12
-$27\dg$
-%%p13
-Calcular ``$\theta$'' en:
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{4.5}
-		\def\a{5mm}
-		\tkzDefPoint(-160:\r){A}
-		\tkzDefPoint(164:\r){B}
-		\tkzDefPoint(-12:\r){C}
-		\tkzFillAngles[size=\a,fill=blue,opacity=.2](C,A,B A,B,C)
-		\tkzFillAngle[size=8mm,fill=blue,opacity=.2](B,C,A)
-		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C)
-		\tkzMarkAngle[size=8mm,mark=none](B,C,A)
-		\tkzLabelAngle[shift={(0,-.1)}](C,A,B){$2\theta$}
-		\tkzLabelAngle[shift={(.2,0)}](A,B,C){$\theta+30\dg$}
-		\tkzLabelAngle[pos=1.7](B,C,A){$18\dg$}
-		\tkzDrawPolygon(A,B,C)
-	\end{tikzpicture}
-\end{figure}
-%%a13
-\begin{task}
-	* $42\dg$
-	* $45\dg$
-	* $44\dg$
-	* $48\dg$
-\end{task}
-%%r13
-$44\dg$
-%%p14
+%%r07
+$36\dg$
+%%p08.40s
 En el romboide $ABCD$, calcular ``$x$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -276,25 +178,103 @@ En el romboide $ABCD$, calcular ``$x$''.
 		\tkzLabelPoints[below right](D)
 	\end{tikzpicture}
 \end{figure}
-%%a14
+%%a08
 \begin{task}
 	* $12\dg$
 	* $15\dg$
 	* $10\dg$
 	* $8\dg$
 \end{task}
-%%r14
+%%r08
 $15\dg$
-%%p15.sp
+%%p09.sp.30s
+\begin{mini}
+	¿Cu\'antas diagonales se pueden trazar en un hex\'agono?
+\end{mini}
+%%a09
+\begin{enum}
+	* $6$
+	* $9$
+	* $12$
+	* $7$
+\end{enum}
+%%r09
+$9$
+%%p10.sp.70s
 \begin{mini}
 	¿Cu\'antas diagonales se pueden trazar en total en un pol\'igono de $28$ lados?
 \end{mini}
-%%a15
+%%a10
 \begin{enum}
 	* $350$
 	* $250$
 	* $170$
 	* $280$
 \end{enum}
-%%r15
+%%r10
 $350$
+%%p11.sp.50s
+\begin{mini}
+	Calcula la suma de las medidas de los \'angulos internos de un dec\'agono.
+\end{mini}
+%%a11
+\begin{enum}
+	* $1080\dg$
+	* $1260\dg$
+	* $1440\dg$
+	* $900\dg$
+\end{task}
+%%r11
+$1440\dg$
+%%p12.sp.40s
+\begin{mini}
+	¿Cu\'anto mide el \'angulo externo de un icos\'agono regular?
+\end{mini}
+%%a12
+\begin{enum}
+	* $12\dg$
+	* $16\dg$
+	* $10\dg$
+	* $18\dg$
+\end{enum}
+%%r12
+$18\dg$
+%%p13.sp.70s
+\begin{mini}
+	¿Cu\'anto suman los \'angulos externos e internos de un icos\'agono?
+\end{mini}
+%%a13
+\begin{enum}
+	* $2800\dg$
+	* $8200\dg$
+	* $3600\dg$
+	* $4000\dg$
+\end{enum}
+%%r13
+$3600\dg$
+%%p14.sp.90s
+\begin{mini}
+	Si se triplica el n\'umero de lados de un pol\'igono, la suma de sus \'angulos internos queda quintuplicada. ¿C\'omo se llama dicho pol\'igono?
+\end{mini}
+%%a14
+\begin{enum}
+	* Tri\'angulo
+	* Ala\'in
+	* Cuadril\'atero
+	* Oct\'ogono
+\end{enum}
+%%r14
+Cuadril\'atero
+%%p15.sp.70s
+\begin{mini}
+	Hallar la suma de los n\'umeros de diagonales de un non\'agono y de un endec\'agono.
+\end{mini}
+%%a15
+\begin{task}
+	* $27$
+	* $44$
+	* $71$
+	* $69$
+\end{task}
+%%r15
+$71$

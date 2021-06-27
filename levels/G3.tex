@@ -1,34 +1,58 @@
-%%p01.sp
-\begin{mini}
-	Si $CD=\ce{10u}$, hallar la longitud del segmento que une los puntos medios de $\ol{AC}$ y $\ol{BD}$.
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\def\r{2.5}
-			\tkzDefPoints{0/0/A,0/\r/B,\r/\r/C,1/0/D1}
-			\tkzDefPointBy[rotation=center C angle 143](B) \tkzGetPoint{D2}
-			\tkzInterLL(A,D1)(C,D2) \tkzGetPoint{D}
-			\tkzMarkRightAngles[size=.3,fill=green!20](D,A,B A,B,C)
-			\tkzFillAngle[size=6mm,fill=green,opacity=.2](C,D,A)
-			\tkzMarkAngle[size=6mm,mark=none](C,D,A)
-			\tkzLabelAngle[pos=1.1](C,D,A){$37\dg$}
-			\tkzDrawPolygon(A,B,C,D)
-			\tkzLabelPoints[below left](A)
-			\tkzLabelPoints[above left](B)
-			\tkzLabelPoints[above right](C)
-			\tkzLabelPoints[below right](D)
-		\end{tikzpicture}
-	\end{center}
-\end{mini}
+%%p01.80s
+En la figura, $AB=BC=CD$. Calcular el valor de ``$\alpha$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{4}
+		\tkzDefPoint(0,0){A}
+		\tkzDefPoint(56:\r){B}
+		\tkzDefPointBy[rotation=center B angle 68](A) \tkzGetPoint{C}
+		\tkzDefPointBy[rotation=center C angle -124](B) \tkzGetPoint{D}
+		\tkzFillAngles[size=5mm,fill=green,opacity=.2](A,B,C B,D,C)
+		\tkzMarkAngles[size=5mm,mark=none](A,B,C B,D,C)
+		\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
+		\tkzLabelAngle[pos=1.2](B,D,C){$28\dg$}
+		\tkzDrawPolygon(A,B,D)
+		\tkzDrawSegment(B,C)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below](C)
+		\tkzLabelPoints[below right](D)
+	\end{tikzpicture}
+\end{figure}
 %%a01
 \begin{task}
-	* $\ce{4u}$
-	* $\ce{3u}$
-	* $\ce{3,5u}$
-	* $\ce{6u}$
+	* $32\dg$
+	* $68\dg$
+	* $44\dg$
+	* $72\dg$
 \end{task}
 %%r01
-$\ce{4u}$
-%%p02
+$68\dg$
+%%p02.70s
+Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\tkzDefPoints{0/0/O,1.1*\r/0/A}
+		\tkzDefPoint(106:\r){B}
+		\tkzDefParallelogram(B,O,A) \tkzGetPoint{C}
+		\tkzFillAngles[size=4mm,fill=green,opacity=.2](A,O,B O,B,C)
+		\tkzMarkAngles[size=4mm,mark=none](A,O,B O,B,C)
+		\tkzLabelAngle[shift={(.5,-.4)}](A,O,B){$4x+54\dg$}
+		\tkzLabelAngle[shift={(.3,.2)}](O,B,C){$8x-30\dg$}
+		\tkzDrawPolygon(B,O,A,C)
+	\end{tikzpicture}
+\end{figure}
+%%a02
+\begin{task}
+	* $12\dg$
+	* $13\dg$
+	* $16\dg$
+	* $28\dg$
+\end{task}
+%%r02
+$13\dg$
+%%p03.90s
 En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -51,7 +75,7 @@ En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 		\tkzLabelPoints[below right](D)
 	\end{tikzpicture}
 \end{figure}
-%%a02
+%%a03
 \begin{mini}[1.4]
 	\begin{task}
 		* $12\dg$ y $124\dg$
@@ -60,9 +84,9 @@ En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 		* $60\dg$ y $110\dg$
 	\end{task}
 \end{mini}
-%%r02
+%%r03
 $60\dg$ y $110\dg$
-%%p03
+%%p04.100s
 En la figura, calcular ``$x$''.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -90,16 +114,77 @@ En la figura, calcular ``$x$''.
 		\tkzLabelPoints[below right](C)
 	\end{tikzpicture}
 \end{figure}
-%%a03
+%%a04
 \begin{task}
 	* $60\dg$
 	* $80\dg$
 	* $75\dg$
 	* $120\dg$
 \end{task}
-%%r03
+%%r04
 $80\dg$
-%%p04
+%%p05.sp.90s
+\begin{mini}
+	¿Cu\'al es el n\'umero de lados de aquel pol\'igono regular cuyo \'angulo interior es $2$ veces su \'angulo exterior?
+\end{mini}
+%%a05
+\begin{enum}
+	* $4$
+	* $12$
+	* $6$
+	* $10$
+\end{enum}
+%%r05
+$6$
+%%p06.sp.90s
+\begin{mini}
+	En un pol\'igono regular, el doble del n\'umero de diagonales es $5$ veces del n\'umero de lados. Luego, la medida de su \'angulo interior es:
+\end{mini}
+%%a06
+\begin{task}
+	* $120\dg$
+	* $135\dg$
+	* $180\dg$
+	* $105\dg$
+\end{task}
+%%r06
+$135\dg$
+%%p07.sp.70s
+\begin{mini}
+	Si la relaci\'on entre el \'angulo interior y central de un pol\'igono regular es como $3$ a $2$, hallar el n\'umero de lados del pol\'igono.
+\end{mini}
+%%a07
+\begin{task}
+	* $3$
+	* $2$
+	* $5$
+	* $4$
+\end{task}
+%%r07
+$5$
+%%p08.sp.120s
+\begin{mini}
+	Calcula la suma de las medidas de los \'angulos interiores de:
+	\begin{center}
+		\begin{tikzpicture}[thick]
+			\def\x{.8}
+			\def\y{.9}
+			\def\z{1}
+			\def\w{1.2}
+			\draw (0,0) -| (\y,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\y,2*\w) -| (0,0);
+		\end{tikzpicture}
+	\end{center}
+\end{mini}
+%%a08
+\begin{task}
+	* $2520\dg$
+	* $1440\dg$
+	* $900\dg$
+	* $2880\dg$
+\end{task}
+%%r08
+$2520\dg$
+%%p09.100s
 Calcular el valor de ``$x$'', en:
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -123,45 +208,16 @@ Calcular el valor de ``$x$'', en:
 		\tkzLabelAngle[pos=1.4,rotate=3*\a](I,A,B){$2\alpha$}
 	\end{tikzpicture}
 \end{figure}
-%%a04
+%%a09
 \begin{task}
 	* $100\dg$
 	* $120\dg$
 	* $130\dg$
 	* $140\dg$
 \end{task}
-%%r04
+%%r09
 $120\dg$
-%%p05
-Si $ABCD$ es un paralelogramo, calcular ``$x$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\x{4}
-		\def\y{3.8}
-		\tkzDefPoints{0/0/A,\x/0/D}
-		\tkzDefPoint(144:\y){B}
-		\tkzDefParallelogram(D,A,B) \tkzGetPoint{C}
-		\tkzFillAngles[size=5mm,fill=green,opacity=.2](B,C,D C,D,A)
-		\tkzMarkAngles[size=5mm,mark=none](B,C,D C,D,A)
-		\tkzLabelAngle[pos=.8](B,C,D){$4x$}
-		\tkzLabelAngle(C,D,A){$x$}
-		\tkzDrawPolygon(A,B,C,D)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above left](B)
-		\tkzLabelPoints[above right](C)
-		\tkzLabelPoints[below right](D)
-	\end{tikzpicture}
-\end{figure}
-%%a05
-\begin{task}
-	* $24\dg$
-	* $36\dg$
-	* $20\dg$
-	* $72\dg$
-\end{task}
-%%r05
-$36\dg$
-%%p06
+%%p10.100s
 \begin{tabular}{c}
 	Si $ABCDEF$ es un hex\'agono regular, calcular ``$x$''. \vspace{5pt} \\
 	\begin{tikzpicture}[thick]
@@ -181,147 +237,46 @@ $36\dg$
 		\tkzLabelPoint[below right](P2){$F$}
 	\end{tikzpicture}
 \end{tabular}
-%%a06
+%%a10
 \begin{task}
 	* $30\dg$
 	* $15\dg$
 	* $20\dg$
 	* $45\dg$
 \end{task}
-%%r06
-$30\dg$
-%%p07
-\begin{tabular}{c}
-	Si $ABCDE\dots$ es un pol\'igono de $20$ lados, calcular ``$x$''. \vspace{5pt} \\
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\def\a{1.4}
-		\tkzDefPoints{-\a*\r/0/X,\a*\r/0/Y,0/-2.1*\r/O,0/.35*\r/P1}
-		\tkzDefRegPolygon[sides=20](O,P1)
-		\tkzInterLL(X,Y)(P19,P20) \tkzGetPoint{T1}
-		\tkzInterLL(X,Y)(P2,P3) \tkzGetPoint{T2}
-		\tkzFillAngles[size=5mm,fill=green,opacity=.2](P20,T1,X Y,T2,P2)
-		\tkzMarkAngles[size=5mm,mark=none](P20,T1,X Y,T2,P2)
-		\tkzDrawPolySeg(P18,P19,P20,P1,P2,P3,P4)
-		\tkzDrawSegment(X,Y)
-		\tkzLabelAngles[pos=.9](P20,T1,X Y,T2,P2){$x$}
-		\tkzLabelPoint[above left](P3){$A$}
-		\tkzLabelPoint[above left](P2){$B$}
-		\tkzLabelPoint[above](P1){$C$}
-		\tkzLabelPoint[above right](P20){$D$}
-		\tkzLabelPoint[above right](P19){$E$}
-	\end{tikzpicture}
-\end{tabular}
-%%a07
-\begin{task}
-	* $38\dg$
-	* $18\dg$
-	* $36\dg$
-	* $27\dg$
-\end{task}
-%%r07
-$27\dg$
-%%p08.sp
-\begin{mini}
-	¿Cu\'al es el n\'umero de lados de aquel pol\'igono regular cuyo \'angulo interior es $2$ veces su \'angulo exterior?
-\end{mini}
-%%a08
-\begin{enum}
-	* $4$
-	* $12$
-	* $6$
-	* $10$
-\end{enum}
-%%r08
-$6$
-%%p09.sp
-\begin{mini}
-	Si se triplica el n\'umero de lados de un pol\'igono, la suma de sus \'angulos internos queda quintuplicada. ¿C\'omo se llama dicho pol\'igono?
-\end{mini}
-%%a09
-\begin{enum}
-	* Tri\'angulo
-	* Ala\'in
-	* Cuadril\'atero
-	* Oct\'ogono
-\end{enum}
-%%r09
-Cuadril\'atero
-%%p10.sp
-\begin{mini}
-	En un pol\'igono regular, el doble del n\'umero de diagonales es $5$ veces del n\'umero de lados. Luego, la medida de su \'angulo interior es:
-\end{mini}
-%%a10
-\begin{task}
-	* $120\dg$
-	* $135\dg$
-	* $180\dg$
-	* $105\dg$
-\end{task}
 %%r10
-$135\dg$
-%%p11
-Calcula el valor de ``$x$''.
+$30\dg$
+%%p11.80s
+Caucular ``$x$'' en:
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
-		\def\r{3}
-		\tkzDefPoints{0/0/O,1.1*\r/0/A}
-		\tkzDefPoint(106:\r){B}
-		\tkzDefParallelogram(B,O,A) \tkzGetPoint{C}
-		\tkzFillAngles[size=4mm,fill=green,opacity=.2](A,O,B O,B,C)
-		\tkzMarkAngles[size=4mm,mark=none](A,O,B O,B,C)
-		\tkzLabelAngle[shift={(.5,-.4)}](A,O,B){$4x+54\dg$}
-		\tkzLabelAngle[shift={(.3,.2)}](O,B,C){$8x-30\dg$}
-		\tkzDrawPolygon(B,O,A,C)
+		\tkzDefPoints{2.8/0/A,0/0/B}
+		\tkzDefPointBy[rotation=center B angle 118](A) \tkzGetPoint{C}
+		\tkzDefPointBy[rotation=center C angle 108](B) \tkzGetPoint{D1}
+		\tkzDefPointBy[homothety=center C ratio 1.3](D1) \tkzGetPoint{D}
+		\tkzDefPointBy[rotation=center D angle 98](C) \tkzGetPoint{E1}
+		\tkzDefPointBy[rotation=center A angle -128](B) \tkzGetPoint{E2}
+		\tkzInterLL(D,E1)(A,E2) \tkzGetPoint{E}
+		\tkzFillAngles[size=5mm,fill=green,opacity=.2](E,A,B A,B,C B,C,D C,D,E D,E,A)
+		\tkzMarkAngles[size=5mm,mark=none](E,A,B A,B,C B,C,D C,D,E D,E,A)
+		\tkzLabelAngle(E,A,B){$x+40\dg$}
+		\tkzLabelAngle(A,B,C){$x+30\dg$}
+		\tkzLabelAngle[pos=1.3](B,C,D){$x+20\dg$}
+		\tkzLabelAngle(C,D,E){$x+10\dg$}
+		\tkzLabelAngle[pos=.9](D,E,A){$x$}
+		\tkzDrawPolygon(A,B,C,D,E)
 	\end{tikzpicture}
 \end{figure}
 %%a11
 \begin{task}
-	* $12\dg$
-	* $13\dg$
-	* $16\dg$
-	* $28\dg$
+	* $92\dg$
+	* $80\dg$
+	* $88\dg$
+	* $100\dg$
 \end{task}
 %%r11
-$13\dg$
-%%p12
-\begin{tabular}{c}
-	La medida del \'angulo exterior marcado en este dibujo es... \vspace{5pt} \\
-	\begin{tikzpicture}[thick]
-		\def\r{3}
-		\tkzDefPoint(-\r,0){A}
-		\tkzDefPoint(118:\r){B}
-		\tkzDefPoint(-100:\r){C}
-		\tkzFillAngles[size=5mm,fill=green,opacity=.2](B,A,C A,B,C B,C,A)
-		\tkzMarkAngles[size=5mm,mark=none](B,A,C A,B,C B,C,A)
-		\tkzDrawPolygon(A,B,C)
-		\tkzLabelAngle(A,B,C){$40\dg$}
-		\tkzLabelAngle[pos=1.3](B,C,A){$31\dg$}
-	\end{tikzpicture}
-\end{tabular}
-%%a12
-\begin{task}
-	* $71\dg$
-	* $261\dg$
-	* $251\dg$
-	* $109\dg$
-\end{task}
-%%r12
-$251\dg$
-%%p13.sp
-\begin{mini}
-	Si la relaci\'on entre el \'angulo interior y central de un pol\'igono regular es como $3$ a $2$, hallar el n\'umero de lados del pol\'igono.
-\end{mini}
-%%a13
-\begin{task}
-	* $3$
-	* $2$
-	* $5$
-	* $4$
-\end{task}
-%%r13
-$5$
-%%p14
+$88\dg$
+%%p12.100s
 Calcula el valor de ``$x$'' del gr\'afico.
 \begin{figure}[h]
 	\begin{tikzpicture}[thick]
@@ -343,34 +298,131 @@ Calcula el valor de ``$x$'' del gr\'afico.
 		\tkzLabelPoints[below](D)
 	\end{tikzpicture}
 \end{figure}
-%%a14
+%%a12
 \begin{task}
 	* $30\dg$
 	* $35\dg$
 	* $70\dg$
 	* $110\dg$
 \end{task}
-%%r14
+%%r12
 $35\dg$
-%%p15.sp
-\begin{mini}
-	Calcula la suma de las medidas de los \'angulos interiores de:
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\def\x{.8}
-			\def\y{.9}
-			\def\z{1}
-			\def\w{1.2}
-			\draw (0,0) -| (\y,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\y,2*\w) -| (0,0);
-		\end{tikzpicture}
-	\end{center}
-\end{mini}
+%%p13.40s
+Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoints{0/0/f,.7*\r/-\r/k}
+		\tkzDefPointBy[rotation=center k angle -125](f) \tkzGetPoint{j}
+		\tkzDefPointBy[rotation=center j angle -115](k) \tkzGetPoint{i1}
+		\tkzDefBarycentricPoint(i1=1,j=.3) \tkzGetPoint{i}
+		\tkzDefPointBy[rotation=center f angle 110](k) \tkzGetPoint{g1}
+		\tkzDefBarycentricPoint(g1=1,f=.1) \tkzGetPoint{g}
+		\tkzDefPointBy[rotation=center g angle 135](f) \tkzGetPoint{h1}
+		\tkzDefPointBy[rotation=center i angle -140](j) \tkzGetPoint{h2}
+		\tkzInterLL(g,h1)(i,h2) \tkzGetPoint{h}
+		\def\a{5mm}
+		\tkzFillAngles[size=\a,fill=green,opacity=.2](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
+		\tkzMarkAngles[size=\a,mark=none](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
+		\tkzDrawPolygon(f,g,h,i,j,k)
+		\tkzLabelAngle[pos=1.3](k,f,g){$5x-15\dg$}
+		\tkzLabelAngle(f,g,h){$5x+10\dg$}
+		\tkzLabelAngle[pos=1.1](g,h,i){$3x+20\dg$}
+		\tkzLabelAngle[pos=1.3](h,i,j){$5x+15\dg$}
+		\tkzLabelAngle(i,j,k){$4x+15\dg$}
+		\tkzLabelAngle[pos=.9](j,k,f){$5x$}
+		\tkzLabelPoints[left](f)
+		\tkzLabelPoints[above left](g)
+		\tkzLabelPoints[above right](h)
+		\tkzLabelPoints[right](i)
+		\tkzLabelPoints[below right](j)
+		\tkzLabelPoints[below left](k)
+	\end{tikzpicture}
+\end{figure}
+%%a13
+\begin{task}
+	* $10\dg$
+	* $4\dg$
+	* $25\dg$
+	* $7\dg$
+\end{task}
+%%r13
+$25\dg$
+%%p14.120s
+\begin{tabular}{c}
+	Si $ABCDE\dots$ es un pol\'igono de $20$ lados, calcular ``$x$''. \vspace{5pt} \\
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\def\a{1.4}
+		\tkzDefPoints{-\a*\r/0/X,\a*\r/0/Y,0/-2.1*\r/O,0/.35*\r/P1}
+		\tkzDefRegPolygon[sides=20](O,P1)
+		\tkzInterLL(X,Y)(P19,P20) \tkzGetPoint{T1}
+		\tkzInterLL(X,Y)(P2,P3) \tkzGetPoint{T2}
+		\tkzFillAngles[size=5mm,fill=green,opacity=.2](P20,T1,X Y,T2,P2)
+		\tkzMarkAngles[size=5mm,mark=none](P20,T1,X Y,T2,P2)
+		\tkzDrawPolySeg(P18,P19,P20,P1,P2,P3,P4)
+		\tkzDrawSegment(X,Y)
+		\tkzLabelAngles[pos=.9](P20,T1,X Y,T2,P2){$x$}
+		\tkzLabelPoint[above left](P3){$A$}
+		\tkzLabelPoint[above left](P2){$B$}
+		\tkzLabelPoint[above](P1){$C$}
+		\tkzLabelPoint[above right](P20){$D$}
+		\tkzLabelPoint[above right](P19){$E$}
+	\end{tikzpicture}
+\end{tabular}
+%%a14
+\begin{task}
+	* $38\dg$
+	* $18\dg$
+	* $36\dg$
+	* $27\dg$
+\end{task}
+%%r14
+$27\dg$
+%%p15.70s
+Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\def\a{-3}
+		\tkzDefPoint(\a+146:\r){A1}
+		\tkzDefPoint(\a+184:\r){B}
+		\tkzDefPointOnLine[pos=1.6](B,A1)
+		\tkzGetPoint{A}
+		\tkzDefPoint(\a-110:\r){C}
+		\tkzDefPoint(\a:\r){D1}
+		\tkzDefPoint(\a+30:\r){E1}
+		\tkzDefParallelogram(A,A1,E1)
+		\tkzGetPoint{P1}
+		\tkzInterLL(A,P1)(D1,E1)
+		\tkzGetPoint{E2}
+		\tkzDefPointOnLine[pos=.9](A,E2)
+		\tkzGetPoint{E}
+		\tkzDefParallelogram(D1,E2,E)
+		\tkzGetPoint{P2}
+		\tkzInterLL(E,P2)(C,D1)
+		\tkzGetPoint{D}
+		\tkzFillAngles[size=5mm,fill=green,opacity=.2](B,A,E A,E,D E,D,C D,C,B C,B,A)
+		\tkzMarkAngles[size=5mm,mark=none](B,A,E A,E,D E,D,C D,C,B C,B,A)
+		\tkzLabelAngles[pos=1.1](B,A,E){$13x-53\dg$}
+		\tkzLabelAngle[pos=1.4](C,B,A){$14x-40\dg$}
+		\tkzLabelAngle[pos=1](D,C,B){$6x+20\dg$}
+		\tkzLabelAngle[pos=1.3](E,D,C){$14x-58\dg$}
+		\tkzLabelAngle[pos=1.1](A,E,D){$5x+47\dg$}
+		\tkzDrawPolygon(A,B,C,D,E)
+		\tkzLabelPoints[above left](A)
+		\tkzLabelPoints[left](B)
+		\tkzLabelPoints[below](C)
+		\tkzLabelPoints[right](D)
+		\tkzLabelPoints[above right](E)
+	\end{tikzpicture}
+\end{figure}
 %%a15
 \begin{task}
-	* $2520\dg$
-	* $1440\dg$
-	* $900\dg$
-	* $2880\dg$
+	* $14\dg$
+	* $13\dg$
+	* $12\dg$
+	* $15\dg$
 \end{task}
 %%r15
-$2520\dg$
+$12\dg$

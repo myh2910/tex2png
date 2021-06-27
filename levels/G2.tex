@@ -1,29 +1,91 @@
-%%p01
-Calcula el valor de ``$x$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\tkzDefPoint(-22:\r){v1}
-		\tkzDefPoint(-158:\r){v2}
-		\tkzDefPoint(66:\r){v3}
-		\tkzFillAngles[size=6mm,fill=yellow,opacity=.2](v1,v2,v3 v2,v3,v1)
-		\tkzMarkAngles[size=6mm,mark=none](v1,v2,v3 v2,v3,v1)
-		\tkzLabelAngle(v1,v2,v3){$x$}
-		\tkzLabelAngle(v2,v3,v1){$68\dg$}
-		\tkzDrawPolygon(v1,v2,v3)
-		\tkzMarkSegments[mark=||](v1,v2 v2,v3)
-	\end{tikzpicture}
-\end{figure}
+%%p01.sp.40s
+\begin{mini}
+	Escribe verdadero (V) o falso (F) seg\'un corresponda y encierra la alternativa correcta.
+	\begin{center}\vspace{-12pt}
+		\begin{tabular}{m{.01\linewidth}m{.77\linewidth}l}
+			I.&Un hex\'agono posee $9$ diagonales.&(\phantom{V}) \vspace{4pt}\\
+			II.&Un pent\'agono posee $5$ diagonales.&(\phantom{V}) \vspace{4pt}\\
+			III.&La suma de las medidas de \'angulos&\multirow{2}{*}{(\phantom{V})} \\
+			&interiores de un dodec\'agono es $1800\dg$.&
+		\end{tabular}
+	\end{center}
+\end{mini}
 %%a01
 \begin{task}
-	* $34\dg$
-	* $41\dg$
-	* $44\dg$
-	* $49\dg$
+	* VVF
+	* FFV
+	* VVV
+	* FFF
 \end{task}
 %%r01
-$44\dg$
-%%p02
+VVV
+%%p02.80s
+\begin{tabular}{c}
+	La medida del \'angulo exterior marcado en este dibujo es... \vspace{5pt} \\
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\tkzDefPoint(-\r,0){A}
+		\tkzDefPoint(118:\r){B}
+		\tkzDefPoint(-100:\r){C}
+		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](B,A,C A,B,C B,C,A)
+		\tkzMarkAngles[size=5mm,mark=none](B,A,C A,B,C B,C,A)
+		\tkzDrawPolygon(A,B,C)
+		\tkzLabelAngle(A,B,C){$40\dg$}
+		\tkzLabelAngle[pos=1.3](B,C,A){$31\dg$}
+	\end{tikzpicture}
+\end{tabular}
+%%a02
+\begin{task}
+	* $71\dg$
+	* $261\dg$
+	* $251\dg$
+	* $109\dg$
+\end{task}
+%%r02
+$251\dg$
+%%p03.40s
+\begin{mini}
+	Hallar la medida del \'angulo interior del pol\'igono regular mostrado.
+	\begin{center}
+		\begin{tikzpicture}[thick]
+			\tkzDefPoints{0/0/P0,0/2/P1}
+			\tkzDefRegPolygon[sides=5](P0,P1)
+			\tkzDrawPolygon(P1,P...,P5)
+		\end{tikzpicture}
+	\end{center}
+\end{mini}
+%%a03
+\begin{task}
+	* $92\dg$
+	* $120\dg$
+	* $108\dg$
+	* $140\dg$
+\end{task}
+%%r03
+$108\dg$
+%%p04.sp.60s
+\begin{tabular}{c}
+	Si la figura es un pol\'igono regular, hallar ``$x$''. \vspace{5pt} \\
+	\begin{tikzpicture}[thick]
+		\tkzDefPoint(0,0){P0}
+		\tkzDefPoint(112.5:2){P1}
+		\tkzDefRegPolygon[sides=8](P0,P1)
+		\tkzFillAngle[size=3mm,fill=yellow,opacity=.2](P3,P2,P1)
+		\tkzMarkAngle[size=3mm,mark=none](P3,P2,P1)
+		\tkzLabelAngle[pos=.6](P3,P2,P1){$x$}
+		\tkzDrawPolygon(P1,P...,P8)
+	\end{tikzpicture}
+\end{tabular}
+%%a04
+\begin{task}
+	* $120\dg$
+	* $145\dg$
+	* $140\dg$
+	* $135\dg$
+\end{task}
+%%r04
+$135\dg$
+%%p05.50s
 \begin{tabular}{c}
 	Si $ABCDE$ es un pol\'igono regular, calcula el valor de ``$x$''. \vspace{5pt} \\
 	\begin{tikzpicture}[thick]
@@ -40,29 +102,226 @@ $44\dg$
 		\tkzLabelPoint[below right](P4){$E$}
 	\end{tikzpicture}
 \end{tabular}
-%%a02
+%%a05
 \begin{task}
 	* $108\dg$
 	* $36\dg$
 	* $54\dg$
 	* $72\dg$
 \end{task}
-%%r02
+%%r05
 $54\dg$
-%%p03.sp
+%%p06.50s
+Calcular ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\tkzDefPoints{0/0/A,0/4/B,-6.4/0/C}
+		\tkzDefPointBy[rotation=center B angle -81](A) \tkzGetPoint{E}
+		\tkzDefPointBy[rotation=center C angle 54](A) \tkzGetPoint{F}
+		\tkzInterLL(B,E)(C,F) \tkzGetPoint{D}
+		\tkzMarkRightAngle[size=.3,fill=yellow!20](B,A,C)
+		\def\r{5mm}
+		\tkzFillAngles[size=\r,fill=yellow,opacity=.2](D,B,A A,C,D C,D,B)
+		\tkzMarkAngles[size=\r,mark=none](D,B,A A,C,D C,D,B)
+		\tkzLabelAngle(D,B,A){$3x$}
+		\tkzLabelAngle(A,C,D){$2x$}
+		\tkzLabelAngle(C,D,B){$5x$}
+		\tkzDrawPolygon(B,A,C,D)
+	\end{tikzpicture}
+\end{figure}
+%%a06
+\begin{task}
+	* $13\dg$
+	* $17\dg$
+	* $14\dg$
+	* $27\dg$
+\end{task}
+%%r06
+$27\dg$
+%%p07.40s
+En la figura, calcular $\alpha$.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoint(-160:\r){A}
+		\tkzDefPoint(120:\r){B}
+		\tkzDefPoint(-30:\r){C}
+		\def\a{6mm}
+		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,A,B A,B,C B,C,A)
+		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C B,C,A)
+		\tkzLabelAngle(C,A,B){$75\dg$}
+		\tkzLabelAngle(A,B,C){$\alpha$}
+		\tkzLabelAngle(B,C,A){$40\dg$}
+		\tkzDrawPolygon(A,B,C)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below right](C)
+	\end{tikzpicture}
+\end{figure}
+%%a07
+\begin{task}
+	* $80\dg$
+	* $40\dg$
+	* $65\dg$
+	* $150\dg$
+\end{task}
+%%r07
+$65\dg$
+%%p08.30s
+Calcula el valor de ``$x$''.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{2.5}
+		\tkzDefPoint(-22:\r){v1}
+		\tkzDefPoint(-158:\r){v2}
+		\tkzDefPoint(66:\r){v3}
+		\tkzFillAngles[size=6mm,fill=yellow,opacity=.2](v1,v2,v3 v2,v3,v1)
+		\tkzMarkAngles[size=6mm,mark=none](v1,v2,v3 v2,v3,v1)
+		\tkzLabelAngle(v1,v2,v3){$x$}
+		\tkzLabelAngle(v2,v3,v1){$68\dg$}
+		\tkzDrawPolygon(v1,v2,v3)
+		\tkzMarkSegments[mark=||](v1,v2 v2,v3)
+	\end{tikzpicture}
+\end{figure}
+%%a08
+\begin{task}
+	* $34\dg$
+	* $41\dg$
+	* $44\dg$
+	* $49\dg$
+\end{task}
+%%r08
+$44\dg$
+%%p09.50s
+Calcular ``$\theta$'' en:
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{4.5}
+		\def\a{5mm}
+		\tkzDefPoint(-160:\r){A}
+		\tkzDefPoint(164:\r){B}
+		\tkzDefPoint(-12:\r){C}
+		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,A,B A,B,C)
+		\tkzFillAngle[size=8mm,fill=yellow,opacity=.2](B,C,A)
+		\tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C)
+		\tkzMarkAngle[size=8mm,mark=none](B,C,A)
+		\tkzLabelAngle[shift={(0,-.1)}](C,A,B){$2\theta$}
+		\tkzLabelAngle[shift={(.2,0)}](A,B,C){$\theta+30\dg$}
+		\tkzLabelAngle[pos=1.7](B,C,A){$18\dg$}
+		\tkzDrawPolygon(A,B,C)
+	\end{tikzpicture}
+\end{figure}
+%%a09
+\begin{task}
+	* $42\dg$
+	* $45\dg$
+	* $44\dg$
+	* $48\dg$
+\end{task}
+%%r09
+$44\dg$
+%%p10.80s
+\begin{tabular}{c}
+	Si el tri\'angulo $ABC$ es equil\'atero, calcular $\text{m}\dang BDC$. \vspace{5pt} \\
+	\begin{tikzpicture}[thick]
+		\def\r{5}
+		\tkzDefPoint(-120:\r){A}
+		\tkzDefPoint(0,0){B}
+		\tkzDefPoint(-60:\r){C}
+		\tkzDefPoint(-100:1){P}
+		\tkzInterLL(B,P)(A,C)
+		\tkzGetPoint{D}
+		\tkzFillAngle[size=8mm,fill=yellow,opacity=.2](A,B,D)
+		\tkzMarkAngle[size=8mm,mark=none](A,B,D)
+		\tkzLabelAngle[pos=1.7](A,B,D){$20\dg$}
+		\tkzDrawPolygon(A,B,C)
+		\tkzDrawSegment(B,D)
+		\tkzLabelPoints[below left](A)
+		\tkzLabelPoints[above](B)
+		\tkzLabelPoints[below right](C)
+		\tkzLabelPoints[below](D)
+	\end{tikzpicture}
+\end{tabular}
+%%a10
+\begin{task}
+	* $70\dg$
+	* $80\dg$
+	* $90\dg$
+	* $75\dg$
+\end{task}
+%%r10
+$80\dg$
+%%p11.60s
+Calcula el valor de ``$x$'' en el gr\'afico mostrado.
+\begin{figure}[h]
+	\begin{tikzpicture}[thick]
+		\def\r{3}
+		\tkzDefPoints{-\r/\r/A,-\r/0/B,0/-\r/C1,2*\r/-\r/D1,0/\r/E}
+		\def\k{1.2}
+		\tkzDefBarycentricPoint(B=1,C1=\k) \tkzGetPoint{C}
+		\tkzDefBarycentricPoint(E=1,D1=1+2*\k) \tkzGetPoint{D}
+		\tkzMarkRightAngle[size=.4,fill=yellow!20](B,A,E)
+		\def\a{5mm}
+		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,B,A D,C,B E,D,C A,E,D)
+		\tkzMarkAngles[size=\a,mark=none](C,B,A D,C,B E,D,C A,E,D)
+		\tkzDrawPolygon(A,B,C,D,E)
+		\tkzLabelAngles(C,B,A D,C,B A,E,D){$3x$}
+		\tkzLabelAngle(E,D,C){$x$}
+	\end{tikzpicture}
+\end{figure}
+%%a11
+\begin{task}
+	* $30\dg$
+	* $45\dg$
+	* $54\dg$
+	* $36\dg$
+\end{task}
+%%r11
+$45\dg$
+%%p12.sp.50s
 \begin{mini}
 	En un tri\'angulo is\'osceles, la suma de dos \'angulos distintos es igual a $110\dg$. Entonces la suma de los \'angulos de la base es:
 \end{mini}
-%%a03
+%%a12
 \begin{task}
 	* $150\dg$
 	* $146\dg$
 	* $140\dg$
 	* $136\dg$
 \end{task}
-%%r03
+%%r12
 $140\dg$
-%%p04.sp
+%%p13.sp.90s
+\begin{mini}
+	Si $CD=\ce{10u}$, hallar la longitud del segmento que une los puntos medios de $\ol{AC}$ y $\ol{BD}$.
+	\begin{center}
+		\begin{tikzpicture}[thick]
+			\def\r{2.5}
+			\tkzDefPoints{0/0/A,0/\r/B,\r/\r/C,1/0/D1}
+			\tkzDefPointBy[rotation=center C angle 143](B) \tkzGetPoint{D2}
+			\tkzInterLL(A,D1)(C,D2) \tkzGetPoint{D}
+			\tkzMarkRightAngles[size=.3,fill=yellow!20](D,A,B A,B,C)
+			\tkzFillAngle[size=6mm,fill=yellow,opacity=.2](C,D,A)
+			\tkzMarkAngle[size=6mm,mark=none](C,D,A)
+			\tkzLabelAngle[pos=1.1](C,D,A){$37\dg$}
+			\tkzDrawPolygon(A,B,C,D)
+			\tkzLabelPoints[below left](A)
+			\tkzLabelPoints[above left](B)
+			\tkzLabelPoints[above right](C)
+			\tkzLabelPoints[below right](D)
+		\end{tikzpicture}
+	\end{center}
+\end{mini}
+%%a13
+\begin{task}
+	* $\ce{4u}$
+	* $\ce{3u}$
+	* $\ce{3,5u}$
+	* $\ce{6u}$
+\end{task}
+%%r13
+$\ce{4u}$
+%%p14.sp.70s
 \begin{mini}[.75]
 	En un $\triangle ABC$, $AB=BC$ y $\text{m}\dang B=108\dg$. Calcular la medida del \'angulo exterior en el v\'ertice ``$C$''.
 	\begin{center}
@@ -92,65 +351,16 @@ $140\dg$
 		\end{tikzpicture}
 	\end{center}
 \end{mini}
-%%a04
+%%a14
 \begin{task}
 	* $89\dg$
 	* $124\dg$
 	* $136\dg$
 	* $144\dg$
 \end{task}
-%%r04
+%%r14
 $144\dg$
-%%p05.sp
-\begin{tabular}{c}
-	Si la figura es un pol\'igono regular, hallar ``$x$''. \vspace{5pt} \\
-	\begin{tikzpicture}[thick]
-		\tkzDefPoint(0,0){P0}
-		\tkzDefPoint(112.5:2){P1}
-		\tkzDefRegPolygon[sides=8](P0,P1)
-		\tkzFillAngle[size=3mm,fill=yellow,opacity=.2](P3,P2,P1)
-		\tkzMarkAngle[size=3mm,mark=none](P3,P2,P1)
-		\tkzLabelAngle[pos=.6](P3,P2,P1){$x$}
-		\tkzDrawPolygon(P1,P...,P8)
-	\end{tikzpicture}
-\end{tabular}
-%%a05
-\begin{task}
-	* $120\dg$
-	* $145\dg$
-	* $140\dg$
-	* $135\dg$
-\end{task}
-%%r05
-$135\dg$
-%%p06
-Calcula el valor de ``$\alpha$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{3}
-		\tkzDefPoint(-165:\r){A}
-		\tkzDefPoint(59:\r){B}
-		\tkzDefPoint(-15:\r){C}
-		\tkzDefPointOnLine[pos=1.2](A,C)
-		\tkzGetPoint{D}
-		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](C,A,B A,B,C D,C,B)
-		\tkzMarkAngles[size=5mm,mark=none](C,A,B A,B,C D,C,B)
-		\tkzLabelAngles[pos=1](C,A,B){$37\dg$}
-		\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
-		\tkzLabelAngle[pos=1](D,C,B){$112\dg$}
-		\tkzDrawPolySeg(D,A,B,C)
-	\end{tikzpicture}
-\end{figure}
-%%a06
-\begin{task}
-	* $78\dg$
-	* $75\dg$
-	* $73\dg$
-	* $74\dg$
-\end{task}
-%%r06
-$75\dg$
-%%p07.sp
+%%p15.sp.60s
 \begin{mini}
 	Calcula el n\'umero total de diagonales que se pueden trazar en la siguiente figura:
 	\begin{center}
@@ -169,254 +379,12 @@ $75\dg$
 		\end{tikzpicture}
 	\end{center}
 \end{mini}
-%%a07
+%%a15
 \begin{task}
 	* $21$
 	* $23$
 	* $28$
 	* $20$
 \end{task}
-%%r07
-$20$
-%%p08
-Calcula el valor de ``$x$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{3}
-		\def\a{-3}
-		\tkzDefPoint(\a+146:\r){A1}
-		\tkzDefPoint(\a+184:\r){B}
-		\tkzDefPointOnLine[pos=1.6](B,A1)
-		\tkzGetPoint{A}
-		\tkzDefPoint(\a-110:\r){C}
-		\tkzDefPoint(\a:\r){D1}
-		\tkzDefPoint(\a+30:\r){E1}
-		\tkzDefParallelogram(A,A1,E1)
-		\tkzGetPoint{P1}
-		\tkzInterLL(A,P1)(D1,E1)
-		\tkzGetPoint{E2}
-		\tkzDefPointOnLine[pos=.9](A,E2)
-		\tkzGetPoint{E}
-		\tkzDefParallelogram(D1,E2,E)
-		\tkzGetPoint{P2}
-		\tkzInterLL(E,P2)(C,D1)
-		\tkzGetPoint{D}
-		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](B,A,E A,E,D E,D,C D,C,B C,B,A)
-		\tkzMarkAngles[size=5mm,mark=none](B,A,E A,E,D E,D,C D,C,B C,B,A)
-		\tkzLabelAngles[pos=1.1](B,A,E){$13x-53\dg$}
-		\tkzLabelAngle[pos=1.4](C,B,A){$14x-40\dg$}
-		\tkzLabelAngle[pos=1](D,C,B){$6x+20\dg$}
-		\tkzLabelAngle[pos=1.3](E,D,C){$14x-58\dg$}
-		\tkzLabelAngle[pos=1.1](A,E,D){$5x+47\dg$}
-		\tkzDrawPolygon(A,B,C,D,E)
-		\tkzLabelPoints[above left](A)
-		\tkzLabelPoints[left](B)
-		\tkzLabelPoints[below](C)
-		\tkzLabelPoints[right](D)
-		\tkzLabelPoints[above right](E)
-	\end{tikzpicture}
-\end{figure}
-%%a08
-\begin{task}
-	* $14\dg$
-	* $13\dg$
-	* $12\dg$
-	* $15\dg$
-\end{task}
-%%r08
-$12\dg$
-%%p09
-\begin{tabular}{c}
-	Si el tri\'angulo $ABC$ es equil\'atero, calcular $\text{m}\dang BDC$. \vspace{5pt} \\
-	\begin{tikzpicture}[thick]
-		\def\r{5}
-		\tkzDefPoint(-120:\r){A}
-		\tkzDefPoint(0,0){B}
-		\tkzDefPoint(-60:\r){C}
-		\tkzDefPoint(-100:1){P}
-		\tkzInterLL(B,P)(A,C)
-		\tkzGetPoint{D}
-		\tkzFillAngle[size=8mm,fill=yellow,opacity=.2](A,B,D)
-		\tkzMarkAngle[size=8mm,mark=none](A,B,D)
-		\tkzLabelAngle[pos=1.7](A,B,D){$20\dg$}
-		\tkzDrawPolygon(A,B,C)
-		\tkzDrawSegment(B,D)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above](B)
-		\tkzLabelPoints[below right](C)
-		\tkzLabelPoints[below](D)
-	\end{tikzpicture}
-\end{tabular}
-%%a09
-\begin{task}
-	* $70\dg$
-	* $80\dg$
-	* $90\dg$
-	* $75\dg$
-\end{task}
-%%r09
-$80\dg$
-%%p10
-Calcula el valor de ``$x$'' en el gr\'afico mostrado.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{3}
-		\tkzDefPoints{-\r/\r/A,-\r/0/B,0/-\r/C1,2*\r/-\r/D1,0/\r/E}
-		\def\k{1.2}
-		\tkzDefBarycentricPoint(B=1,C1=\k) \tkzGetPoint{C}
-		\tkzDefBarycentricPoint(E=1,D1=1+2*\k) \tkzGetPoint{D}
-		\tkzMarkRightAngle[size=.4,fill=yellow!20](B,A,E)
-		\def\a{5mm}
-		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,B,A D,C,B E,D,C A,E,D)
-		\tkzMarkAngles[size=\a,mark=none](C,B,A D,C,B E,D,C A,E,D)
-		\tkzDrawPolygon(A,B,C,D,E)
-		\tkzLabelAngles(C,B,A D,C,B A,E,D){$3x$}
-		\tkzLabelAngle(E,D,C){$x$}
-	\end{tikzpicture}
-\end{figure}
-%%a10
-\begin{task}
-	* $30\dg$
-	* $45\dg$
-	* $54\dg$
-	* $36\dg$
-\end{task}
-%%r10
-$45\dg$
-%%p11.sp
-\begin{mini}
-	El per\'imetro del tri\'angulo es de $\ce{20cm}$. ¿Cu\'anto mide el lado $AC$?
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\def\r{3}
-			\def\a{16.6}
-			\tkzDefPoint(\a+146.8:\r){A}
-			\tkzDefPoint(\a:\r){B}
-			\tkzDefPoint(\a+50.42:\r){C}
-			\draw (A) node[below left] {$A$} -- node[below] {$x+5$} (B) node[below right] {$B$} -- node[above right] {$x$} (C) node[above] {$C$} -- node[above left] {$x+3$} (A);
-		\end{tikzpicture}
-	\end{center}
-\end{mini}
-%%a11
-\begin{task}
-	* $\ce{5cm}$
-	* $\ce{2cm}$
-	* $\ce{7cm}$
-	* $\ce{6cm}$
-\end{task}
-%%r11
-$\ce{7cm}$
-%%p12
-Calcula el valor de ``$x$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\tkzDefPoints{0/0/f,.7*\r/-\r/k}
-		\tkzDefPointBy[rotation=center k angle -125](f) \tkzGetPoint{j}
-		\tkzDefPointBy[rotation=center j angle -115](k) \tkzGetPoint{i1}
-		\tkzDefBarycentricPoint(i1=1,j=.3) \tkzGetPoint{i}
-		\tkzDefPointBy[rotation=center f angle 110](k) \tkzGetPoint{g1}
-		\tkzDefBarycentricPoint(g1=1,f=.1) \tkzGetPoint{g}
-		\tkzDefPointBy[rotation=center g angle 135](f) \tkzGetPoint{h1}
-		\tkzDefPointBy[rotation=center i angle -140](j) \tkzGetPoint{h2}
-		\tkzInterLL(g,h1)(i,h2) \tkzGetPoint{h}
-		\def\a{5mm}
-		\tkzFillAngles[size=\a,fill=yellow,opacity=.2](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
-		\tkzMarkAngles[size=\a,mark=none](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
-		\tkzDrawPolygon(f,g,h,i,j,k)
-		\tkzLabelAngle[pos=1.3](k,f,g){$5x-15\dg$}
-		\tkzLabelAngle(f,g,h){$5x+10\dg$}
-		\tkzLabelAngle[pos=1.1](g,h,i){$3x+20\dg$}
-		\tkzLabelAngle[pos=1.3](h,i,j){$5x+15\dg$}
-		\tkzLabelAngle(i,j,k){$4x+15\dg$}
-		\tkzLabelAngle[pos=.9](j,k,f){$5x$}
-		\tkzLabelPoints[left](f)
-		\tkzLabelPoints[above left](g)
-		\tkzLabelPoints[above right](h)
-		\tkzLabelPoints[right](i)
-		\tkzLabelPoints[below right](j)
-		\tkzLabelPoints[below left](k)
-	\end{tikzpicture}
-\end{figure}
-%%a12
-\begin{task}
-	* $10\dg$
-	* $4\dg$
-	* $25\dg$
-	* $7\dg$
-\end{task}
-%%r12
-$25\dg$
-%%p13
-En la figura, $AB=BC=CD$. Calcular el valor de ``$\alpha$''.
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{4}
-		\tkzDefPoint(0,0){A}
-		\tkzDefPoint(56:\r){B}
-		\tkzDefPointBy[rotation=center B angle 68](A) \tkzGetPoint{C}
-		\tkzDefPointBy[rotation=center C angle -124](B) \tkzGetPoint{D}
-		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](A,B,C B,D,C)
-		\tkzMarkAngles[size=5mm,mark=none](A,B,C B,D,C)
-		\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
-		\tkzLabelAngle[pos=1.2](B,D,C){$28\dg$}
-		\tkzDrawPolygon(A,B,D)
-		\tkzDrawSegment(B,C)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above](B)
-		\tkzLabelPoints[below](C)
-		\tkzLabelPoints[below right](D)
-	\end{tikzpicture}
-\end{figure}
-%%a13
-\begin{task}
-	* $32\dg$
-	* $68\dg$
-	* $44\dg$
-	* $72\dg$
-\end{task}
-%%r13
-$68\dg$
-%%p14.sp
-\begin{mini}
-	Hallar la suma de los n\'umeros de diagonales de un non\'agono y de un endec\'agono.
-\end{mini}
-%%a14
-\begin{task}
-	* $27$
-	* $44$
-	* $71$
-	* $69$
-\end{task}
-%%r14
-$71$
-%%p15
-Caucular ``$x$'' en:
-\begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\tkzDefPoints{2.8/0/A,0/0/B}
-		\tkzDefPointBy[rotation=center B angle 118](A) \tkzGetPoint{C}
-		\tkzDefPointBy[rotation=center C angle 108](B) \tkzGetPoint{D1}
-		\tkzDefPointBy[homothety=center C ratio 1.3](D1) \tkzGetPoint{D}
-		\tkzDefPointBy[rotation=center D angle 98](C) \tkzGetPoint{E1}
-		\tkzDefPointBy[rotation=center A angle -128](B) \tkzGetPoint{E2}
-		\tkzInterLL(D,E1)(A,E2) \tkzGetPoint{E}
-		\tkzFillAngles[size=5mm,fill=yellow,opacity=.2](E,A,B A,B,C B,C,D C,D,E D,E,A)
-		\tkzMarkAngles[size=5mm,mark=none](E,A,B A,B,C B,C,D C,D,E D,E,A)
-		\tkzLabelAngle(E,A,B){$x+40\dg$}
-		\tkzLabelAngle(A,B,C){$x+30\dg$}
-		\tkzLabelAngle[pos=1.3](B,C,D){$x+20\dg$}
-		\tkzLabelAngle(C,D,E){$x+10\dg$}
-		\tkzLabelAngle[pos=.9](D,E,A){$x$}
-		\tkzDrawPolygon(A,B,C,D,E)
-	\end{tikzpicture}
-\end{figure}
-%%a15
-\begin{task}
-	* $92\dg$
-	* $80\dg$
-	* $88\dg$
-	* $100\dg$
-\end{task}
 %%r15
-$88\dg$
+$20$
