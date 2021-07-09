@@ -1,1 +1,1 @@
-This is a python code that I wrote to help with my sister's math homework.
+This is a python code I wrote for my sister's school project.
