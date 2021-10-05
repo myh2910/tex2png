@@ -1,0 +1,4 @@
+## python-latex
+
+This is a python code that I wrote for my sister's school project. It converts
+multiple .tex files to images.

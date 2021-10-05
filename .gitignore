@@ -1,2 +1,2 @@
-tex/*
-__pycache__
+tex/
+**__pycache__/
