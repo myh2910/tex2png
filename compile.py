@@ -1,7 +1,9 @@
 import os
 from glob import glob
-from colorama import Fore
 from timeit import default_timer as timer
+
+from colorama import Fore
+
 
 def convert(level, pacman):
 	parents = []
