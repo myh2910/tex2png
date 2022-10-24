@@ -1,4 +1,4 @@
 # tex2png
 
-This is a python code that I wrote for my sister's [school project](https://docs.google.com/presentation/d/1Xi2SPhz79BGwr0nU78tF82GKrf9dXX6PEablEDynN9w/edit).
-It converts multiple TeX equations to images.
+This is a python code I wrote for my sister's school project. It is
+intended to convert multiple TeX files into images.
