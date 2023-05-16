@@ -2,10 +2,10 @@
 Un triángulo tiene $\underline{\phantom{3}}$ vértices.
 %%a01
 \begin{enum}
-	* $4$
-	* $6$
-	* $3$
-	* $8$
+  * $4$
+  * $6$
+  * $3$
+  * $8$
 \end{enum}
 %%r01
 $3$
@@ -13,268 +13,268 @@ $3$
 Triángulo o también llamado...?
 %%a02
 \begin{enum}
-	* Alaín
-	* Trígono
-	* Triangulitis
-	* Cuadrilátero
+  * Alaín
+  * Trígono
+  * Triangulitis
+  * Cuadrilátero
 \end{enum}
 %%r02
 Trígono
 %%p03
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\tkzDefPoint(-20:\r){A}
-		\tkzDefPoint(180:\r){B}
-		\tkzDefPoint(-98:\r){C}
-		\tkzDefBarycentricPoint(A=-2,C=5) \tkzGetPoint{D}
-		\def\a{6mm}
-		\tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A B,C,D)
-		\tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A B,C,D)
-		\tkzLabelAngle(B,A,C){$41\dg$}
-		\tkzLabelAngle(C,B,A){$x$}
-		\tkzLabelAngle(B,C,D){$80\dg$}
-		\tkzDrawPolygon(A,B,C)
-		\tkzDrawSegment[dashed](C,D)
-		\tkzLabelPoints[right](A)
-		\tkzLabelPoints[left](B)
-		\tkzLabelPoints[below](C)
-	\end{tikzpicture}
+  \begin{tikzpicture}[thick]
+    \def\r{2.5}
+    \tkzDefPoint(-20:\r){A}
+    \tkzDefPoint(180:\r){B}
+    \tkzDefPoint(-98:\r){C}
+    \tkzDefBarycentricPoint(A=-2,C=5) \tkzGetPoint{D}
+    \def\a{6mm}
+    \tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A B,C,D)
+    \tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A B,C,D)
+    \tkzLabelAngle(B,A,C){$41\dg$}
+    \tkzLabelAngle(C,B,A){$x$}
+    \tkzLabelAngle(B,C,D){$80\dg$}
+    \tkzDrawPolygon(A,B,C)
+    \tkzDrawSegment[dashed](C,D)
+    \tkzLabelPoints[right](A)
+    \tkzLabelPoints[left](B)
+    \tkzLabelPoints[below](C)
+  \end{tikzpicture}
 \end{figure}
 %%a03
 \begin{task}
-	* $52\dg$
-	* $39\dg$
-	* $61\dg$
-	* $121\dg$
+  * $52\dg$
+  * $39\dg$
+  * $61\dg$
+  * $121\dg$
 \end{task}
 %%r03
 $39\dg$
 %%p04
 Calcula el valor de ``$\alpha$''.
-	\begin{figure}[h]
-		\begin{tikzpicture}[thick]
-			\def\r{3}
-			\tkzDefPoint(-165:\r){A}
-			\tkzDefPoint(59:\r){B}
-			\tkzDefPoint(-15:\r){C}
-			\tkzDefPointOnLine[pos=1.2](A,C)
-			\tkzGetPoint{D}
-			\tkzFillAngles[size=5mm,fill=blue,opacity=.2](C,A,B A,B,C D,C,B)
-			\tkzMarkAngles[size=5mm,mark=none](C,A,B A,B,C D,C,B)
-			\tkzLabelAngles[pos=1](C,A,B){$37\dg$}
-			\tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
-			\tkzLabelAngle[pos=1](D,C,B){$112\dg$}
-			\tkzDrawPolySeg(D,A,B,C)
-		\end{tikzpicture}
-	\end{figure}
+  \begin{figure}[h]
+    \begin{tikzpicture}[thick]
+      \def\r{3}
+      \tkzDefPoint(-165:\r){A}
+      \tkzDefPoint(59:\r){B}
+      \tkzDefPoint(-15:\r){C}
+      \tkzDefPointOnLine[pos=1.2](A,C)
+      \tkzGetPoint{D}
+      \tkzFillAngles[size=5mm,fill=blue,opacity=.2](C,A,B A,B,C D,C,B)
+      \tkzMarkAngles[size=5mm,mark=none](C,A,B A,B,C D,C,B)
+      \tkzLabelAngles[pos=1](C,A,B){$37\dg$}
+      \tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
+      \tkzLabelAngle[pos=1](D,C,B){$112\dg$}
+      \tkzDrawPolySeg(D,A,B,C)
+    \end{tikzpicture}
+  \end{figure}
 %%a04
 \begin{task}
-	* $78\dg$
-	* $75\dg$
-	* $73\dg$
-	* $74\dg$
+  * $78\dg$
+  * $75\dg$
+  * $73\dg$
+  * $74\dg$
 \end{task}
 %%r04
 $75\dg$
 %%p05.sp
 \begin{mini}
-	El perímetro del triángulo es de $\ce{20cm}$. ¿Cuánto mide el lado $AC$?
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\def\r{3}
-			\def\a{16.6}
-			\tkzDefPoint(\a+146.8:\r){A}
-			\tkzDefPoint(\a:\r){B}
-			\tkzDefPoint(\a+50.42:\r){C}
-			\draw (A) node[below left] {$A$} -- node[below] {$x+5$} (B) node[below right] {$B$} -- node[above right] {$x$} (C) node[above] {$C$} -- node[above left] {$x+3$} (A);
-		\end{tikzpicture}
-	\end{center}
+  El perímetro del triángulo es de $\ce{20cm}$. ¿Cuánto mide el lado $AC$?
+  \begin{center}
+    \begin{tikzpicture}[thick]
+      \def\r{3}
+      \def\a{16.6}
+      \tkzDefPoint(\a+146.8:\r){A}
+      \tkzDefPoint(\a:\r){B}
+      \tkzDefPoint(\a+50.42:\r){C}
+      \draw (A) node[below left] {$A$} -- node[below] {$x+5$} (B) node[below right] {$B$} -- node[above right] {$x$} (C) node[above] {$C$} -- node[above left] {$x+3$} (A);
+    \end{tikzpicture}
+  \end{center}
 \end{mini}
 %%a05
 \begin{task}
-	* $\ce{5cm}$
-	* $\ce{2cm}$
-	* $\ce{7cm}$
-	* $\ce{6cm}$
+  * $\ce{5cm}$
+  * $\ce{2cm}$
+  * $\ce{7cm}$
+  * $\ce{6cm}$
 \end{task}
 %%r05
 $\ce{7cm}$
 %%p06
 En la figura, hallar ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\r{2.5}
-		\tkzDefPoint(-150:\r){A}
-		\tkzDefPoint(-30:\r){B}
-		\tkzDefPoint(60:\r){C}
-		\def\a{6mm}
-		\tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A A,C,B)
-		\tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A A,C,B)
-		\tkzLabelAngle(B,A,C){$3x$}
-		\tkzLabelAngle(C,B,A){$5x$}
-		\tkzLabelAngle(A,C,B){$4x$}
-		\tkzDrawPolygon(A,B,C)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[below right](B)
-		\tkzLabelPoints[above](C)
-	\end{tikzpicture}
+  \begin{tikzpicture}[thick]
+    \def\r{2.5}
+    \tkzDefPoint(-150:\r){A}
+    \tkzDefPoint(-30:\r){B}
+    \tkzDefPoint(60:\r){C}
+    \def\a{6mm}
+    \tkzFillAngles[size=\a,fill=blue,opacity=.2](B,A,C C,B,A A,C,B)
+    \tkzMarkAngles[size=\a,mark=none](B,A,C C,B,A A,C,B)
+    \tkzLabelAngle(B,A,C){$3x$}
+    \tkzLabelAngle(C,B,A){$5x$}
+    \tkzLabelAngle(A,C,B){$4x$}
+    \tkzDrawPolygon(A,B,C)
+    \tkzLabelPoints[below left](A)
+    \tkzLabelPoints[below right](B)
+    \tkzLabelPoints[above](C)
+  \end{tikzpicture}
 \end{figure}
 %%a06
 \begin{task}
-	* $15\dg$
-	* $18\dg$
-	* $20\dg$
-	* $10\dg$
+  * $15\dg$
+  * $18\dg$
+  * $20\dg$
+  * $10\dg$
 \end{task}
 %%r06
 $15\dg$
 %%p07
 Si $ABCD$ es un paralelogramo, calcular ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\def\x{4}
-		\def\y{3.8}
-		\tkzDefPoints{0/0/A,\x/0/D}
-		\tkzDefPoint(144:\y){B}
-		\tkzDefParallelogram(D,A,B) \tkzGetPoint{C}
-		\tkzFillAngles[size=5mm,fill=blue,opacity=.2](B,C,D C,D,A)
-		\tkzMarkAngles[size=5mm,mark=none](B,C,D C,D,A)
-		\tkzLabelAngle[pos=.8](B,C,D){$4x$}
-		\tkzLabelAngle(C,D,A){$x$}
-		\tkzDrawPolygon(A,B,C,D)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above left](B)
-		\tkzLabelPoints[above right](C)
-		\tkzLabelPoints[below right](D)
-	\end{tikzpicture}
+  \begin{tikzpicture}[thick]
+    \def\x{4}
+    \def\y{3.8}
+    \tkzDefPoints{0/0/A,\x/0/D}
+    \tkzDefPoint(144:\y){B}
+    \tkzDefParallelogram(D,A,B) \tkzGetPoint{C}
+    \tkzFillAngles[size=5mm,fill=blue,opacity=.2](B,C,D C,D,A)
+    \tkzMarkAngles[size=5mm,mark=none](B,C,D C,D,A)
+    \tkzLabelAngle[pos=.8](B,C,D){$4x$}
+    \tkzLabelAngle(C,D,A){$x$}
+    \tkzDrawPolygon(A,B,C,D)
+    \tkzLabelPoints[below left](A)
+    \tkzLabelPoints[above left](B)
+    \tkzLabelPoints[above right](C)
+    \tkzLabelPoints[below right](D)
+  \end{tikzpicture}
 \end{figure}
 %%a07
 \begin{task}
-	* $24\dg$
-	* $36\dg$
-	* $20\dg$
-	* $72\dg$
+  * $24\dg$
+  * $36\dg$
+  * $20\dg$
+  * $72\dg$
 \end{task}
 %%r07
 $36\dg$
 %%p08
 En el romboide $ABCD$, calcular ``$x$''.
 \begin{figure}[h]
-	\begin{tikzpicture}[thick]
-		\tkzDefPoints{0/0/A,4/0/D}
-		\tkzDefPoint(75:3){B}
-		\tkzDefParallelogram(B,A,D) \tkzGetPoint{C}
-		\def\r{6mm}
-		\tkzFillAngles[size=\r,fill=blue,opacity=.2](A,B,C B,C,D)
-		\tkzMarkAngles[size=\r,mark=none](A,B,C B,C,D)
-		\tkzLabelAngle(A,B,C){$7x$}
-		\tkzLabelAngle(B,C,D){$5x$}
-		\tkzDrawPolygon(A,B,C,D)
-		\tkzLabelPoints[below left](A)
-		\tkzLabelPoints[above left](B)
-		\tkzLabelPoints[above right](C)
-		\tkzLabelPoints[below right](D)
-	\end{tikzpicture}
+  \begin{tikzpicture}[thick]
+    \tkzDefPoints{0/0/A,4/0/D}
+    \tkzDefPoint(75:3){B}
+    \tkzDefParallelogram(B,A,D) \tkzGetPoint{C}
+    \def\r{6mm}
+    \tkzFillAngles[size=\r,fill=blue,opacity=.2](A,B,C B,C,D)
+    \tkzMarkAngles[size=\r,mark=none](A,B,C B,C,D)
+    \tkzLabelAngle(A,B,C){$7x$}
+    \tkzLabelAngle(B,C,D){$5x$}
+    \tkzDrawPolygon(A,B,C,D)
+    \tkzLabelPoints[below left](A)
+    \tkzLabelPoints[above left](B)
+    \tkzLabelPoints[above right](C)
+    \tkzLabelPoints[below right](D)
+  \end{tikzpicture}
 \end{figure}
 %%a08
 \begin{task}
-	* $12\dg$
-	* $15\dg$
-	* $10\dg$
-	* $8\dg$
+  * $12\dg$
+  * $15\dg$
+  * $10\dg$
+  * $8\dg$
 \end{task}
 %%r08
 $15\dg$
 %%p09.sp
 \begin{mini}
-	¿Cuántas diagonales se pueden trazar en un hexágono?
+  ¿Cuántas diagonales se pueden trazar en un hexágono?
 \end{mini}
 %%a09
 \begin{enum}
-	* $6$
-	* $9$
-	* $12$
-	* $7$
+  * $6$
+  * $9$
+  * $12$
+  * $7$
 \end{enum}
 %%r09
 $9$
 %%p10.sp
 \begin{mini}
-	¿Cuántas diagonales se pueden trazar en total en un polígono de $28$ lados?
+  ¿Cuántas diagonales se pueden trazar en total en un polígono de $28$ lados?
 \end{mini}
 %%a10
 \begin{enum}
-	* $350$
-	* $250$
-	* $170$
-	* $280$
+  * $350$
+  * $250$
+  * $170$
+  * $280$
 \end{enum}
 %%r10
 $350$
 %%p11.sp
 \begin{mini}
-	Calcula la suma de las medidas de los ángulos internos de un decágono.
+  Calcula la suma de las medidas de los ángulos internos de un decágono.
 \end{mini}
 %%a11
 \begin{enum}
-	* $1080\dg$
-	* $1260\dg$
-	* $1440\dg$
-	* $900\dg$
+  * $1080\dg$
+  * $1260\dg$
+  * $1440\dg$
+  * $900\dg$
 \end{enum}
 %%r11
 $1440\dg$
 %%p12.sp
 \begin{mini}
-	¿Cuánto mide el ángulo externo de un icoságono regular?
+  ¿Cuánto mide el ángulo externo de un icoságono regular?
 \end{mini}
 %%a12
 \begin{enum}
-	* $12\dg$
-	* $16\dg$
-	* $10\dg$
-	* $18\dg$
+  * $12\dg$
+  * $16\dg$
+  * $10\dg$
+  * $18\dg$
 \end{enum}
 %%r12
 $18\dg$
 %%p13.sp
 \begin{mini}
-	¿Cuánto suman los ángulos externos e internos de un icoságono?
+  ¿Cuánto suman los ángulos externos e internos de un icoságono?
 \end{mini}
 %%a13
 \begin{enum}
-	* $2800\dg$
-	* $8200\dg$
-	* $3600\dg$
-	* $4000\dg$
+  * $2800\dg$
+  * $8200\dg$
+  * $3600\dg$
+  * $4000\dg$
 \end{enum}
 %%r13
 $3600\dg$
 %%p14.sp
 \begin{mini}
-	Si se triplica el número de lados de un polígono, la suma de sus ángulos internos queda quintuplicada. ¿Cómo se llama dicho polígono?
+  Si se triplica el número de lados de un polígono, la suma de sus ángulos internos queda quintuplicada. ¿Cómo se llama dicho polígono?
 \end{mini}
 %%a14
 \begin{enum}
-	* Triángulo
-	* Alaín
-	* Cuadrilátero
-	* Octógono
+  * Triángulo
+  * Alaín
+  * Cuadrilátero
+  * Octógono
 \end{enum}
 %%r14
 Cuadrilátero
 %%p15.sp
 \begin{mini}
-	Hallar la suma de los números de diagonales de un nonágono y de un endecágono.
+  Hallar la suma de los números de diagonales de un nonágono y de un endecágono.
 \end{mini}
 %%a15
 \begin{task}
-	* $27$
-	* $44$
-	* $71$
-	* $69$
+  * $27$
+  * $44$
+  * $71$
+  * $69$
 \end{task}
 %%r15
 $71$
