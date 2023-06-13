@@ -1,5 +1,6 @@
-tex/
 **__pycache__/
+tex/
+png/
 levels/
 !levels/A[1-3].tex
 !levels/G[1-3].tex
