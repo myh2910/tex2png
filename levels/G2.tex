@@ -1,12 +1,13 @@
 %%p01.sp
 \begin{mini}
-  Escribe verdadero (V) o falso (F) según corresponda y encierra la alternativa correcta.
+  Escribe verdadero (V) o falso (F) según corresponda y encierra la alternativa
+  correcta.
   \begin{center}\vspace{-12pt}
     \begin{tabular}{m{.01\linewidth}m{.77\linewidth}l}
-      I.&Un hexágono posee $9$ diagonales.&(\phantom{V}) \vspace{4pt}\\
-      II.&Un pentágono posee $5$ diagonales.&(\phantom{V}) \vspace{4pt}\\
-      III.&La suma de las medidas de ángulos&\multirow{2}{*}{(\phantom{V})} \\
-      &interiores de un dodecágono es $1800\dg$.&
+      I.   & Un hexágono posee $9$ diagonales.         & (\phantom{V})\vspace{4pt} \\
+      II.  & Un pentágono posee $5$ diagonales.        & (\phantom{V})\vspace{4pt} \\
+      III. & La suma de las medidas de ángulos         & \multirow{2}{*}{(\phantom{V})} \\
+           & interiores de un dodecágono es $1800\dg$. &
     \end{tabular}
   \end{center}
 \end{mini}
@@ -21,14 +22,15 @@
 VVV
 %%p02
 \begin{tabular}{c}
-  La medida del ángulo exterior marcado en este dibujo es... \vspace{5pt} \\
+  La medida del ángulo exterior marcado en este dibujo es...\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3}
     \tkzDefPoint(-\r,0){A}
     \tkzDefPoint(118:\r){B}
     \tkzDefPoint(-100:\r){C}
     \tkzFillAngles[size=5mm,fill=yellow,opacity=.2](B,A,C A,B,C B,C,A)
-    \tkzMarkAngles[size=5mm,mark=none](B,A,C A,B,C B,C,A)
+    \tkzMarkAngles[size=5mm](B,A,C A,B,C B,C,A)
     \tkzDrawPolygon(A,B,C)
     \tkzLabelAngle(A,B,C){$40\dg$}
     \tkzLabelAngle[pos=1.3](B,C,A){$31\dg$}
@@ -47,7 +49,8 @@ $251\dg$
 \begin{mini}
   Hallar la medida del ángulo interior del polígono regular mostrado.
   \begin{center}
-    \begin{tikzpicture}[thick]
+    \begin{tikzpicture}
+      \tkzSetUpLine[thick]
       \tkzDefPoints{0/0/P0,0/2/P1}
       \tkzDefRegPolygon[sides=5](P0,P1)
       \tkzDrawPolygon(P1,P...,P5)
@@ -65,13 +68,14 @@ $251\dg$
 $108\dg$
 %%p04.sp
 \begin{tabular}{c}
-  Si la figura es un polígono regular, hallar ``$x$''. \vspace{5pt} \\
+  Si la figura es un polígono regular, hallar ``$x$''.\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \tkzDefPoint(0,0){P0}
     \tkzDefPoint(112.5:2){P1}
     \tkzDefRegPolygon[sides=8](P0,P1)
     \tkzFillAngle[size=3mm,fill=yellow,opacity=.2](P3,P2,P1)
-    \tkzMarkAngle[size=3mm,mark=none](P3,P2,P1)
+    \tkzMarkAngle[size=3mm](P3,P2,P1)
     \tkzLabelAngle[pos=.6](P3,P2,P1){$x$}
     \tkzDrawPolygon(P1,P...,P8)
   \end{tikzpicture}
@@ -87,12 +91,13 @@ $108\dg$
 $135\dg$
 %%p05
 \begin{tabular}{c}
-  Si $ABCDE$ es un polígono regular, calcula el valor de ``$x$''. \vspace{5pt} \\
+  Si $ABCDE$ es un polígono regular, calcula el valor de ``$x$''.\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \tkzDefPoints{0/0/O,0/2.5/P1}
     \tkzDefRegPolygon[sides=5](O,P1)
     \tkzFillAngles[size=5mm,fill=yellow,opacity=.2](P1,P5,P4)
-    \tkzMarkAngles[size=5mm,mark=none](P1,P5,P4)
+    \tkzMarkAngles[size=5mm](P1,P5,P4)
     \tkzDrawPolygon(P1,P...,P5)
     \tkzLabelAngle(P1,P5,P4){$2x$}
     \tkzLabelPoint[below left](P3){$A$}
@@ -115,6 +120,7 @@ $54\dg$
 Calcular ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \tkzDefPoints{0/0/A,0/4/B,-6.4/0/C}
     \tkzDefPointBy[rotation=center B angle -81](A) \tkzGetPoint{E}
     \tkzDefPointBy[rotation=center C angle 54](A) \tkzGetPoint{F}
@@ -122,7 +128,7 @@ Calcular ``$x$''.
     \tkzMarkRightAngle[size=.3,fill=yellow!20](B,A,C)
     \def\r{5mm}
     \tkzFillAngles[size=\r,fill=yellow,opacity=.2](D,B,A A,C,D C,D,B)
-    \tkzMarkAngles[size=\r,mark=none](D,B,A A,C,D C,D,B)
+    \tkzMarkAngles[size=\r](D,B,A A,C,D C,D,B)
     \tkzLabelAngle(D,B,A){$3x$}
     \tkzLabelAngle(A,C,D){$2x$}
     \tkzLabelAngle(C,D,B){$5x$}
@@ -142,13 +148,14 @@ $27\dg$
 En la figura, calcular $\alpha$.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2.5}
     \tkzDefPoint(-160:\r){A}
     \tkzDefPoint(120:\r){B}
     \tkzDefPoint(-30:\r){C}
     \def\a{6mm}
     \tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,A,B A,B,C B,C,A)
-    \tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C B,C,A)
+    \tkzMarkAngles[size=\a](C,A,B A,B,C B,C,A)
     \tkzLabelAngle(C,A,B){$75\dg$}
     \tkzLabelAngle(A,B,C){$\alpha$}
     \tkzLabelAngle(B,C,A){$40\dg$}
@@ -171,12 +178,13 @@ $65\dg$
 Calcula el valor de ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2.5}
     \tkzDefPoint(-22:\r){v1}
     \tkzDefPoint(-158:\r){v2}
     \tkzDefPoint(66:\r){v3}
     \tkzFillAngles[size=6mm,fill=yellow,opacity=.2](v1,v2,v3 v2,v3,v1)
-    \tkzMarkAngles[size=6mm,mark=none](v1,v2,v3 v2,v3,v1)
+    \tkzMarkAngles[size=6mm](v1,v2,v3 v2,v3,v1)
     \tkzLabelAngle(v1,v2,v3){$x$}
     \tkzLabelAngle(v2,v3,v1){$68\dg$}
     \tkzDrawPolygon(v1,v2,v3)
@@ -196,6 +204,7 @@ $44\dg$
 Calcular ``$\theta$'' en:
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{4.5}
     \def\a{5mm}
     \tkzDefPoint(-160:\r){A}
@@ -203,8 +212,8 @@ Calcular ``$\theta$'' en:
     \tkzDefPoint(-12:\r){C}
     \tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,A,B A,B,C)
     \tkzFillAngle[size=8mm,fill=yellow,opacity=.2](B,C,A)
-    \tkzMarkAngles[size=\a,mark=none](C,A,B A,B,C)
-    \tkzMarkAngle[size=8mm,mark=none](B,C,A)
+    \tkzMarkAngles[size=\a](C,A,B A,B,C)
+    \tkzMarkAngle[size=8mm](B,C,A)
     \tkzLabelAngle[shift={(0,-.1)}](C,A,B){$2\theta$}
     \tkzLabelAngle[shift={(.2,0)}](A,B,C){$\theta+30\dg$}
     \tkzLabelAngle[pos=1.7](B,C,A){$18\dg$}
@@ -222,8 +231,9 @@ Calcular ``$\theta$'' en:
 $44\dg$
 %%p10
 \begin{tabular}{c}
-  Si el triángulo $ABC$ es equilátero, calcular $\text{m}\dang BDC$. \vspace{5pt} \\
+  Si el triángulo $ABC$ es equilátero, calcular $\text{m}\dang BDC$.\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{5}
     \tkzDefPoint(-120:\r){A}
     \tkzDefPoint(0,0){B}
@@ -232,7 +242,7 @@ $44\dg$
     \tkzInterLL(B,P)(A,C)
     \tkzGetPoint{D}
     \tkzFillAngle[size=8mm,fill=yellow,opacity=.2](A,B,D)
-    \tkzMarkAngle[size=8mm,mark=none](A,B,D)
+    \tkzMarkAngle[size=8mm](A,B,D)
     \tkzLabelAngle[pos=1.7](A,B,D){$20\dg$}
     \tkzDrawPolygon(A,B,C)
     \tkzDrawSegment(B,D)
@@ -255,6 +265,7 @@ $80\dg$
 Calcula el valor de ``$x$'' en el gráfico mostrado.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3}
     \tkzDefPoints{-\r/\r/A,-\r/0/B,0/-\r/C1,2*\r/-\r/D1,0/\r/E}
     \def\k{1.2}
@@ -263,7 +274,7 @@ Calcula el valor de ``$x$'' en el gráfico mostrado.
     \tkzMarkRightAngle[size=.4,fill=yellow!20](B,A,E)
     \def\a{5mm}
     \tkzFillAngles[size=\a,fill=yellow,opacity=.2](C,B,A D,C,B E,D,C A,E,D)
-    \tkzMarkAngles[size=\a,mark=none](C,B,A D,C,B E,D,C A,E,D)
+    \tkzMarkAngles[size=\a](C,B,A D,C,B E,D,C A,E,D)
     \tkzDrawPolygon(A,B,C,D,E)
     \tkzLabelAngles(C,B,A D,C,B A,E,D){$3x$}
     \tkzLabelAngle(E,D,C){$x$}
@@ -280,7 +291,8 @@ Calcula el valor de ``$x$'' en el gráfico mostrado.
 $45\dg$
 %%p12.sp
 \begin{mini}
-  En un triángulo isósceles, la suma de dos ángulos distintos es igual a $110\dg$. Entonces la suma de los ángulos de la base es:
+  En un triángulo isósceles, la suma de dos ángulos distintos es igual a
+  $110\dg$. Entonces la suma de los ángulos de la base es:
 \end{mini}
 %%a12
 \begin{task}
@@ -293,16 +305,18 @@ $45\dg$
 $140\dg$
 %%p13.sp
 \begin{mini}
-  Si $CD=\ce{10u}$, hallar la longitud del segmento que une los puntos medios de $\ol{AC}$ y $\ol{BD}$.
+  Si $CD=\ce{10u}$, hallar la longitud del segmento que une los puntos medios de
+  $\ol{AC}$ y $\ol{BD}$.
   \begin{center}
     \begin{tikzpicture}[thick]
+      \tkzSetUpLine[thick]
       \def\r{2.5}
       \tkzDefPoints{0/0/A,0/\r/B,\r/\r/C,1/0/D1}
       \tkzDefPointBy[rotation=center C angle 143](B) \tkzGetPoint{D2}
       \tkzInterLL(A,D1)(C,D2) \tkzGetPoint{D}
       \tkzMarkRightAngles[size=.3,fill=yellow!20](D,A,B A,B,C)
       \tkzFillAngle[size=6mm,fill=yellow,opacity=.2](C,D,A)
-      \tkzMarkAngle[size=6mm,mark=none](C,D,A)
+      \tkzMarkAngle[size=6mm](C,D,A)
       \tkzLabelAngle[pos=1.1](C,D,A){$37\dg$}
       \tkzDrawPolygon(A,B,C,D)
       \tkzLabelPoints[below left](A)
@@ -323,9 +337,11 @@ $140\dg$
 $\ce{4u}$
 %%p14.sp
 \begin{mini}[.75]
-  En un $\triangle ABC$, $AB=BC$ y $\text{m}\dang B=108\dg$. Calcular la medida del ángulo exterior en el vértice ``$C$''.
+  En un $\triangle ABC$, $AB=BC$ y $\text{m}\dang B=108\dg$. Calcular la medida
+  del ángulo exterior en el vértice ``$C$''.
   \begin{center}
     \begin{tikzpicture}[thick]
+      \tkzSetUpLine[thick]
       \def\r{3.6}
       \tkzDefPoint(162:\r){A}
       \tkzDefPoint(0,\r){B}
@@ -334,8 +350,8 @@ $\ce{4u}$
       \tkzGetPoint{D}
       \tkzFillAngles[size=5mm,fill=yellow,opacity=.2](A,B,C B,C,A C,A,B)
       \tkzFillAngle[size=3mm,fill=yellow,opacity=.2](D,C,B)
-      \tkzMarkAngles[size=5mm,mark=none](A,B,C B,C,A C,A,B)
-      \tkzMarkAngle[size=3mm,mark=none](D,C,B)
+      \tkzMarkAngles[size=5mm](A,B,C B,C,A C,A,B)
+      \tkzMarkAngle[size=3mm](D,C,B)
       \tkzLabelAngles[pos=.8](B,C,A C,A,B){$\alpha$}
       \tkzLabelAngle[pos=.8](A,B,C){$108\dg$}
       \tkzLabelAngle[pos=.55](D,C,B){$x$}
@@ -362,9 +378,11 @@ $\ce{4u}$
 $144\dg$
 %%p15.sp
 \begin{mini}
-  Calcula el número total de diagonales que se pueden trazar en la siguiente figura:
+  Calcula el número total de diagonales que se pueden trazar en la siguiente
+  figura:
   \begin{center}
-    \begin{tikzpicture}[thick]
+    \begin{tikzpicture}
+      \tkzSetUpLine[thick]
       \def\x{1.4}
       \def\y{1.5}
       \tkzDefPoints{-\x/0/A,\x/0/B}

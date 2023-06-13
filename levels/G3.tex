@@ -2,13 +2,14 @@
 En la figura, $AB=BC=CD$. Calcular el valor de ``$\alpha$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{4}
     \tkzDefPoint(0,0){A}
     \tkzDefPoint(56:\r){B}
     \tkzDefPointBy[rotation=center B angle 68](A) \tkzGetPoint{C}
     \tkzDefPointBy[rotation=center C angle -124](B) \tkzGetPoint{D}
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](A,B,C B,D,C)
-    \tkzMarkAngles[size=5mm,mark=none](A,B,C B,D,C)
+    \tkzMarkAngles[size=5mm](A,B,C B,D,C)
     \tkzLabelAngle[pos=.9](A,B,C){$\alpha$}
     \tkzLabelAngle[pos=1.2](B,D,C){$28\dg$}
     \tkzDrawPolygon(A,B,D)
@@ -32,12 +33,13 @@ $68\dg$
 Calcula el valor de ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3}
     \tkzDefPoints{0/0/O,1.1*\r/0/A}
     \tkzDefPoint(106:\r){B}
     \tkzDefParallelogram(B,O,A) \tkzGetPoint{C}
     \tkzFillAngles[size=4mm,fill=green,opacity=.2](A,O,B O,B,C)
-    \tkzMarkAngles[size=4mm,mark=none](A,O,B O,B,C)
+    \tkzMarkAngles[size=4mm](A,O,B O,B,C)
     \tkzLabelAngle[shift={(.5,-.4)}](A,O,B){$4x+54\dg$}
     \tkzLabelAngle[shift={(.3,.2)}](O,B,C){$8x-30\dg$}
     \tkzDrawPolygon(B,O,A,C)
@@ -56,6 +58,7 @@ $13\dg$
 En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\x{3}
     \tkzDefPoints{-\x/0/A,\x/0/D,-1/\x/O1,1/\x/O2}
     \tkzDefShiftPoint[A](70:1){B1}
@@ -63,7 +66,7 @@ En la figura, $\ol{BC}\parallel\ol{AD}$. Calcular ``$\alpha$'' y ``$\beta$''.
     \tkzInterLL(A,B1)(O1,O2) \tkzGetPoint{B}
     \tkzInterLL(D,C1)(O1,O2) \tkzGetPoint{C}
     \tkzFillAngles[size=4mm,fill=green,opacity=.2](D,A,B A,B,C B,C,D C,D,A)
-    \tkzMarkAngles[size=4mm,mark=none](D,A,B A,B,C B,C,D C,D,A)
+    \tkzMarkAngles[size=4mm](D,A,B A,B,C B,C,D C,D,A)
     \tkzLabelAngle(D,A,B){$70\dg$}
     \tkzLabelAngle[pos=.8](A,B,C){$\beta$}
     \tkzLabelAngle[shift={(-.2,.1)}](B,C,D){$2\alpha-5\dg$}
@@ -90,6 +93,7 @@ $60\dg$ y $110\dg$
 En la figura, calcular ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3.5}
     \tkzDefPoint(170:\r){A}
     \tkzDefPoint(100:\r){B}
@@ -97,10 +101,11 @@ En la figura, calcular ``$x$''.
     \tkzInCenter(A,B,C) \tkzGetPoint{I}
     \tkzDefPointsBy[homothety=center C ratio 1.2](B,I){B1,I1}
     \tkzFillAngles[size=6mm,fill=green,opacity=.2](B,C,I I,C,A C,A,I I,A,B)
-    \tkzMarkAngles[size=6mm,mark=|](B,C,I I,C,A)
-    \tkzMarkAngles[size=5.4mm,arc=ll,mark=none](C,A,I I,A,B)
+    \tkzMarkAngles[size=6mm,mark=|,mksize=2](B,C,I I,C,A)
+    \tkzMarkAngles[size=6mm](C,A,I I,A,B)
+    \tkzMarkAngles[size=5.1mm](C,A,I I,A,B)
     \tkzFillAngles[size=4mm,fill=green,opacity=.2](B1,B,A I1,I,A)
-    \tkzMarkAngles[size=4mm,mark=none](B1,B,A I1,I,A)
+    \tkzMarkAngles[size=4mm](B1,B,A I1,I,A)
     \tkzDrawPolygon(A,B,C)
     \tkzDrawSegment(B1,B)
     \tkzDrawSegment(A,I)
@@ -125,7 +130,8 @@ En la figura, calcular ``$x$''.
 $80\dg$
 %%p05.sp
 \begin{mini}
-  ¿Cuál es el número de lados de aquel polígono regular cuyo ángulo interior es $2$ veces su ángulo exterior?
+  ¿Cuál es el número de lados de aquel polígono regular cuyo ángulo interior es
+  $2$ veces su ángulo exterior?
 \end{mini}
 %%a05
 \begin{enum}
@@ -138,7 +144,8 @@ $80\dg$
 $6$
 %%p06.sp
 \begin{mini}
-  En un polígono regular, el doble del número de diagonales es $5$ veces del número de lados. Luego, la medida de su ángulo interior es:
+  En un polígono regular, el doble del número de diagonales es $5$ veces del
+  número de lados. Luego, la medida de su ángulo interior es:
 \end{mini}
 %%a06
 \begin{task}
@@ -151,7 +158,8 @@ $6$
 $135\dg$
 %%p07.sp
 \begin{mini}
-  Si la relación entre el ángulo interior y central de un polígono regular es como $3$ a $2$, hallar el número de lados del polígono.
+  Si la relación entre el ángulo interior y central de un polígono regular es
+  como $3$ a $2$, hallar el número de lados del polígono.
 \end{mini}
 %%a07
 \begin{task}
@@ -171,7 +179,15 @@ $5$
       \def\y{.9}
       \def\z{1}
       \def\w{1.2}
-      \draw (0,0) -| (\y,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\x,\w) -| ++ (\z,-\w) -| ++ (\y,2*\w) -| (0,0);
+      \draw (0,0)%
+        -| (\y,\w)%
+        -| ++ (\z,-\w)%
+        -| ++ (\x,\w)%
+        -| ++ (\z,-\w)%
+        -| ++ (\x,\w)%
+        -| ++ (\z,-\w)%
+        -| ++ (\y,2*\w)%
+        -| (0,0);
     \end{tikzpicture}
   \end{center}
 \end{mini}
@@ -188,6 +204,7 @@ $2520\dg$
 Calcular el valor de ``$x$'', en:
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3.5}
     \def\a{9}
     \tkzDefPoint(-170:\r){A}
@@ -197,7 +214,7 @@ Calcular el valor de ``$x$'', en:
     \tkzDefShiftPoint[C](120+3*\a:1){I2}
     \tkzInterLL(A,I1)(C,I2) \tkzGetPoint{I}
     \tkzFillAngles[size=6mm,fill=green,opacity=.2](A,B,C A,I,C B,C,I I,C,A C,A,I I,A,B)
-    \tkzMarkAngles[size=6mm,mark=none](A,B,C A,I,C B,C,I I,C,A C,A,I I,A,B)
+    \tkzMarkAngles[size=6mm](A,B,C A,I,C B,C,I I,C,A C,A,I I,A,B)
     \tkzDrawPolygon(A,B,C)
     \tkzDrawPolySeg(A,I,C)
     \tkzLabelAngle[pos=1](A,B,C){$80\dg$}
@@ -219,13 +236,14 @@ Calcular el valor de ``$x$'', en:
 $120\dg$
 %%p10
 \begin{tabular}{c}
-  Si $ABCDEF$ es un hexágono regular, calcular ``$x$''. \vspace{5pt} \\
+  Si $ABCDEF$ es un hexágono regular, calcular ``$x$''.\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2}
     \tkzDefPoints{1.1*\r/0/X,-1.1*\r/0/Y,0/\r/O,0/0/P1}
     \tkzDefRegPolygon[sides=6](O,P1)
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](X,P1,P2 P6,P1,Y)
-    \tkzMarkAngles[size=5mm,mark=none](X,P1,P2 P6,P1,Y)
+    \tkzMarkAngles[size=5mm](X,P1,P2 P6,P1,Y)
     \tkzDrawPolygon(P1,P...,P6)
     \tkzDrawSegment[<->,>=latex](X,Y)
     \tkzLabelAngles[pos=.9](X,P1,P2 P6,P1,Y){$x$}
@@ -250,6 +268,7 @@ $30\dg$
 Calcular ``$x$'' en:
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \tkzDefPoints{2.8/0/A,0/0/B}
     \tkzDefPointBy[rotation=center B angle 118](A) \tkzGetPoint{C}
     \tkzDefPointBy[rotation=center C angle 108](B) \tkzGetPoint{D1}
@@ -258,7 +277,7 @@ Calcular ``$x$'' en:
     \tkzDefPointBy[rotation=center A angle -128](B) \tkzGetPoint{E2}
     \tkzInterLL(D,E1)(A,E2) \tkzGetPoint{E}
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](E,A,B A,B,C B,C,D C,D,E D,E,A)
-    \tkzMarkAngles[size=5mm,mark=none](E,A,B A,B,C B,C,D C,D,E D,E,A)
+    \tkzMarkAngles[size=5mm](E,A,B A,B,C B,C,D C,D,E D,E,A)
     \tkzLabelAngle(E,A,B){$x+40\dg$}
     \tkzLabelAngle(A,B,C){$x+30\dg$}
     \tkzLabelAngle[pos=1.3](B,C,D){$x+20\dg$}
@@ -280,14 +299,15 @@ $88\dg$
 Calcula el valor de ``$x$'' del gráfico.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2.8}
     \tkzDefPoint(-177.5:\r){A}
     \tkzDefPoint(-2.5:\r){C}
     \tkzDefPoints{0/0/D,0/.9*\r/B}
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](D,A,B A,B,C B,C,D)
     \tkzFillAngle[size=3.5mm,fill=green,opacity=.2](C,D,A)
-    \tkzMarkAngles[size=5mm,mark=none](D,A,B A,B,C B,C,D)
-    \tkzMarkAngle[size=3.5mm,mark=none](C,D,A)
+    \tkzMarkAngles[size=5mm](D,A,B A,B,C B,C,D)
+    \tkzMarkAngle[size=3.5mm](C,D,A)
     \tkzDrawPolygon(A,B,C,D)
     \tkzLabelAngles(D,A,B B,C,D){$x$}
     \tkzLabelAngle[pos=.8](A,B,C){$3x$}
@@ -311,6 +331,7 @@ $35\dg$
 Calcula el valor de ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2.5}
     \tkzDefPoints{0/0/f,.7*\r/-\r/k}
     \tkzDefPointBy[rotation=center k angle -125](f) \tkzGetPoint{j}
@@ -323,7 +344,7 @@ Calcula el valor de ``$x$''.
     \tkzInterLL(g,h1)(i,h2) \tkzGetPoint{h}
     \def\a{5mm}
     \tkzFillAngles[size=\a,fill=green,opacity=.2](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
-    \tkzMarkAngles[size=\a,mark=none](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
+    \tkzMarkAngles[size=\a](k,f,g f,g,h g,h,i h,i,j i,j,k j,k,f)
     \tkzDrawPolygon(f,g,h,i,j,k)
     \tkzLabelAngle[pos=1.3](k,f,g){$5x-15\dg$}
     \tkzLabelAngle(f,g,h){$5x+10\dg$}
@@ -350,8 +371,9 @@ Calcula el valor de ``$x$''.
 $25\dg$
 %%p14
 \begin{tabular}{c}
-  Si $ABCDE\dots$ es un polígono de $20$ lados, calcular ``$x$''. \vspace{5pt} \\
+  Si $ABCDE\dots$ es un polígono de $20$ lados, calcular ``$x$''.\vspace{5pt} \\
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{2.5}
     \def\a{1.4}
     \tkzDefPoints{-\a*\r/0/X,\a*\r/0/Y,0/-2.1*\r/O,0/.35*\r/P1}
@@ -359,7 +381,7 @@ $25\dg$
     \tkzInterLL(X,Y)(P19,P20) \tkzGetPoint{T1}
     \tkzInterLL(X,Y)(P2,P3) \tkzGetPoint{T2}
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](P20,T1,X Y,T2,P2)
-    \tkzMarkAngles[size=5mm,mark=none](P20,T1,X Y,T2,P2)
+    \tkzMarkAngles[size=5mm](P20,T1,X Y,T2,P2)
     \tkzDrawPolySeg(P18,P19,P20,P1,P2,P3,P4)
     \tkzDrawSegment(X,Y)
     \tkzLabelAngles[pos=.9](P20,T1,X Y,T2,P2){$x$}
@@ -383,6 +405,7 @@ $27\dg$
 Calcula el valor de ``$x$''.
 \begin{figure}[h]
   \begin{tikzpicture}[thick]
+    \tkzSetUpLine[thick]
     \def\r{3}
     \def\a{-3}
     \tkzDefPoint(\a+146:\r){A1}
@@ -403,7 +426,7 @@ Calcula el valor de ``$x$''.
     \tkzInterLL(E,P2)(C,D1)
     \tkzGetPoint{D}
     \tkzFillAngles[size=5mm,fill=green,opacity=.2](B,A,E A,E,D E,D,C D,C,B C,B,A)
-    \tkzMarkAngles[size=5mm,mark=none](B,A,E A,E,D E,D,C D,C,B C,B,A)
+    \tkzMarkAngles[size=5mm](B,A,E A,E,D E,D,C D,C,B C,B,A)
     \tkzLabelAngles[pos=1.1](B,A,E){$13x-53\dg$}
     \tkzLabelAngle[pos=1.4](C,B,A){$14x-40\dg$}
     \tkzLabelAngle[pos=1](D,C,B){$6x+20\dg$}
