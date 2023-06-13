@@ -114,16 +114,17 @@ pacman = [
         "code": "\\DeclareMathOperator{\\GR}{GR}\n",
     },
 ]
-pacman.reverse()
 
 
-def convert(level, pacman):
+def compile_tex_files(path, name):
     parents = []
-    total = 0
-    with open(level, "r") as o:
+    num_files = 0
+
+    with open(path, "r") as o:
         original = o.readlines()
         tex_file = ""
         insert_point = 0
+
         for i, line in enumerate(original):
             for pkg in pacman:
                 if pkg["id"] in parents or pkg["cmd"] in line:
@@ -131,6 +132,7 @@ def convert(level, pacman):
                     if parent:
                         parents.append(parent)
                     pkg["stat"] = True
+
             if "%%" in line and i > 0 or i > len(original) - 2:
                 with open(tex_file, "r+") as t:
                     contents = t.readlines()
@@ -145,18 +147,28 @@ def convert(level, pacman):
                     t.seek(0)
                     t.writelines(contents)
                 print(
-                    f"{Fore.LIGHTMAGENTA_EX}Compiling file {Fore.LIGHTCYAN_EX}{tex_file}{Fore.LIGHTMAGENTA_EX}...{Fore.RESET}"
+                    "%sCompiling file %s%s%s...%s"
+                    % (
+                        Fore.LIGHTMAGENTA_EX,
+                        Fore.LIGHTCYAN_EX,
+                        tex_file,
+                        Fore.LIGHTMAGENTA_EX,
+                        Fore.RESET,
+                    )
                 )
-                os.system(f"latexmk -silent {tex_file}")
+                os.system(f'latexmk -silent "{tex_file}"')
                 parents = []
-                total += 1
+                num_files += 1
+
             if "%%" in line:
                 types = line.strip().split(".")
                 file_type = types[0][2:]
-                tex_dir = f"tex/{os.path.basename(level)[:-4]}/{file_type[1:]}/"
+                tex_dir = f"tex/{name}/{file_type[1:]}/"
+                tex_file = f"{tex_dir}{file_type}.tex"
+
                 if not os.path.exists(tex_dir):
                     os.makedirs(tex_dir)
-                tex_file = f"{tex_dir}{file_type}.tex"
+
                 with open(tex_file, "w") as t:
                     t.write("\\documentclass[margin=1pt,preview]{standalone}\n")
                     insert_point = 2
@@ -166,47 +178,68 @@ def convert(level, pacman):
                     t.write("\\usepackage{amsmath,amssymb,cmbright}\n")
                     if file_type[0] == "r":
                         t.write(
-                            r"""\usepackage{xcolor}
-\begin{document}
-\color{red}
-"""
+                            "\\usepackage{xcolor}\n\\begin{document}\n\\color{red}\n"
                         )
                         insert_point += 1
                     else:
                         t.write("\\begin{document}\n")
+
             elif i < len(original) - 1:
                 with open(tex_file, "a") as t:
                     t.write(line)
-    return total
+    return num_files
 
 
-def compile(*levels):
-    start = timer()
-    if len(levels) == 0:
-        levels = glob("levels/*.tex")
-    else:
-        levels = [f"levels/{x}.tex" for x in levels]
+def copy_images(name):
+    tex_dir = f"tex/{name}/"
+    png_dir = f"png/{name}/"
+
+    if not os.path.exists(png_dir):
+        os.makedirs(png_dir)
+
+    os.system(f"cp -u {tex_dir}**/*.png {png_dir}")
+
+
+def main(*levels):
+    start_time = timer()
+
+    pacman.reverse()
+
     for pkg in pacman:
         pkg["stat"] = False
-    total = 0
-    for level in levels:
-        if os.path.exists(level):
+
+    if len(levels) == 0:
+        paths = glob("levels/*.tex")
+    else:
+        paths = [f"levels/{name}.tex" for name in levels]
+
+    num_files = 0
+    for path in paths:
+        if os.path.exists(path):
             print(
-                f"{Fore.LIGHTGREEN_EX}File {Fore.LIGHTCYAN_EX}{level} {Fore.LIGHTGREEN_EX}found. Processing images..."
+                "%sFile %s%s%s found. Compiling TeX files..."
+                % (Fore.LIGHTGREEN_EX, Fore.LIGHTCYAN_EX, path, Fore.LIGHTGREEN_EX)
             )
-            total += convert(level, pacman)
+            name = os.path.basename(path)[:-4]
+            num_files += compile_tex_files(path, name)
+            copy_images(name)
         else:
             print(
-                f"{Fore.LIGHTRED_EX}Error! The file {Fore.LIGHTYELLOW_EX}{level} {Fore.LIGHTRED_EX}does not exist."
+                "%sError! The file %s%s%s does not exist."
+                % (Fore.LIGHTRED_EX, Fore.LIGHTYELLOW_EX, path, Fore.LIGHTRED_EX)
             )
-    end = timer()
+
+    end_time = timer()
+
     print(
-        f"{Fore.LIGHTYELLOW_EX}Compiled files: {Fore.LIGHTCYAN_EX}{total} {Fore.LIGHTYELLOW_EX}documents."
+        "%sProcessed %s%s%s images."
+        % (Fore.LIGHTYELLOW_EX, Fore.LIGHTCYAN_EX, num_files, Fore.LIGHTYELLOW_EX)
     )
     print(
-        f"Elapsed time: {Fore.LIGHTCYAN_EX}{end - start} {Fore.LIGHTYELLOW_EX}seconds."
+        "Elapsed time: %s%0.2f%s seconds."
+        % (Fore.LIGHTCYAN_EX, end_time - start_time, Fore.LIGHTYELLOW_EX)
     )
 
 
 if __name__ == "__main__":
-    compile()
+    main()
